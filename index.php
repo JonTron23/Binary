@@ -7,7 +7,7 @@
 
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="files/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Document</title>
@@ -64,16 +64,16 @@
             <div id="twitter">
                 <a class="twitter-timeline" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
-            <div id="instagram">
-                
+            <div id="instagram" class="bg-red-200">
+                <h1>instagram</h1>
             </div>
-            <div id="youtube">
+            <div id="youtube" class="bg-green-200">
                 <iframe width="420" height="315"
                     src="https://www.youtube.com/embed/tgbNymZ7vqY">
                 </iframe>
             </div>
             
-            <div id="twitch-embed"></div>
+            <div id="twitch-embed" class="bg-blue-200"></div>
             <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
             <script type="text/javascript">
@@ -89,17 +89,25 @@
         
         
         </section>
-        <section id="partner">
 
+        <section id="partner">
+            <h1>COMMING SOON!</h1>
         </section>
         <section id="qa">
 
         </section>
     </main>
     <footer>
-        <div class="socialIcons">
-
+    <p>Copyright</p>
+    <i class="fa-solid fa-copyright"></i>
+    <a href="">Impressum</a>
+        <div class="socialIcons flex justify-end">
+            <i class="fa-brands fa-youtube"></i>
+            <i class="fa-brands fa-twitter"></i>
+            <i class="fa-brands fa-twitch"></i>
+            <i class="fa-brands fa-instagram"></i>
         </div>
+
     </footer>
 </body>
 </html>
