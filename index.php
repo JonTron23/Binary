@@ -15,7 +15,7 @@
 <body>
     <header>
         <nav>
-            <ul>
+            <ul class="grid grid-cols-7 px-4">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#home">About</a></li>
                 <li><a href="#home">Games</a></li>
@@ -27,33 +27,74 @@
         </nav>
     </header>
     <main>
-        <section id="home">
-
+        <section id="welcome">
+            <h1 class="title">Welcome to Binary Gaming</h1>
+            <img class="logo" src="files/media/Logo_Design/Logo_Design_White.png" alt="logo">
+            <div id="start">
+                <h2 class="text-4xl">Scroll Down</h2>
+                <a href="#home"><i class="fa-solid fa-arrow-down"></i></a>
+            </div>
         </section>
-        <section id="about">
 
+        <section id="about">
+            <div id="timeline">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
         </section>
         <section id="games">
             <div id="game_card">
-                
+                <h2>Rainbow Six Siege</h2>
+                <a href=""><img src="files/media/rainbow.jpg" alt=""></a>
+            </div>
+            <div id="game_card">
+                <h2>League of Legends</h2>
+                <a href=""><img src="files/media/lol.jpg" alt=""></a>
+            </div>
+            <div id="game_card">
+                <h2>CSGO</h2>
+                <a href=""><img src="files/media/csgo.jpg" alt=""></a>
             </div>
 
 
         </section>
 
-        <section id="news">
+        <section id="news" class="flex flex-col justify-around">
             <div id="news_element">
-                <div class="title">
-                    <h1>test</h1>
-                </div>
-                <div id="news_image">
-                    <img src="" alt="">
-                </div>
+                <img src="files/media/mountain.jpg" alt="">
                 <div id="news_text">
+                    <h1 class="news_title">Test</h1>
                     <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
                         At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
-                        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. 
-                        At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                    </p>
+                </div>
+            </div>
+
+            <div id="news_element" class="">
+                <img src="files/media/mountain.jpg" alt="">
+                <div id="news_text">
+                    <h1 class="news_title">Test</h1>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+                        At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+                    </p>
+                </div>
+            </div>
+
+            <div id="news_element" class="">
+                <img src="files/media/mountain.jpg" alt="">
+                <div id="news_text">
+                    <h1 class="news_title">Test</h1>
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+                        At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+                    </p>
                 </div>
             </div>
 
@@ -62,7 +103,7 @@
 
         </section>
 
-        <section id="media">
+        <!-- <section id="media">
             <div id="twitter">
                 <a class="twitter-timeline" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
@@ -90,24 +131,37 @@
         
         
         
-        </section>
+        </section> -->
 
         <section id="partner">
             <h1>COMMING SOON!</h1>
         </section>
         <section id="qa">
-
+            <ul id="faq_list">
+                <li class="faq_element">
+                    <div class="faq_header">
+                        <div class="question">
+                            <div><h2>question</h2></div>
+                            
+                        </div>
+                    </div>
+                    <div class="faq_footer">
+                        <div class="answer">
+                            <p>answer asdkfja asdfasdf asdfklasjdfö asdfjasdlf asdfs dfsdf df d dlöfs</p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
         </section>
     </main>
-    <footer>
-    <p>Copyright</p>
+    <footer class="flex">
     <i class="fa-solid fa-copyright"></i>
     <a href="">Impressum</a>
-        <div class="socialIcons flex justify-end">
-            <i class="fa-brands fa-youtube"></i>
-            <i class="fa-brands fa-twitter"></i>
-            <i class="fa-brands fa-twitch"></i>
-            <i class="fa-brands fa-instagram"></i>
+        <div class="socialIcons ">
+            <a href="" class="p-2"><i class="fa-brands fa-youtube"></i></a>
+            <a href="" class="p-2"><i class="fa-brands fa-twitter"></i></a>
+            <a href="" class="p-2"><i class="fa-brands fa-twitch"></i></a>
+            <a href="" class="p-2"><i class="fa-brands fa-instagram"></i></a>
         </div>
 
     </footer>
