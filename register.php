@@ -52,6 +52,9 @@
             <input type="submit" value="Submit" id="submit">
     </form>
 
+    <p>
+  		Already a member? <a href="login.php">Sign in</a>
+  	</p>
 
 
 </body>
