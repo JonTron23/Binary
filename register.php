@@ -27,10 +27,6 @@
                         $error_password = "Password does not match requirements";
                         echo $error_password;
                     }
-                    if(!preg_match("/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/", $rpassword)){
-                        $error_rpassword = "repeat Password does not match requirements";
-                        echo $error_rpassword;
-                    }
                     if($password === $rpassword){
                         
                     }
