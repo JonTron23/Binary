@@ -106,11 +106,20 @@
         <!-- <section id="media">
             <div id="twitter">
                 <a class="twitter-timeline" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            </div>
+            </div>-->
             <div id="instagram" class="bg-red-200">
                 <h1>instagram</h1>
+                <!-- Place <div> tag where you want the feed to appear -->
+                <div id="curator-feed-default-feed-layout"><a href="https://curator.io" target="_blank" class="crt-logo crt-tag">Powered by Curator.io</a></div><!-- The Javascript can be moved to the end of the html page before the </body> tag --><script type="text/javascript">
+                /* curator-feed-default-feed-layout */
+                (function(){
+                var i,e,d=document,s="script";i=d.createElement("script");i.async=1;i.charset="UTF-8";
+                i.src="https://cdn.curator.io/published/75198765-5779-4cdd-a659-2bb5a07c285f.js";
+                e=d.getElementsByTagName(s)[0];e.parentNode.insertBefore(i, e);
+                })();
+                </script>
             </div>
-            <div id="youtube" class="bg-green-200">
+            <!--<div id="youtube" class="bg-green-200">
                 <iframe width="420" height="315"
                     src="https://www.youtube.com/embed/tgbNymZ7vqY">
                 </iframe>
