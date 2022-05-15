@@ -94,3 +94,9 @@ nav ul li a {
 #news_element #news_text{
     margin: 1rem 2rem 0rem 2rem;
 }
+label{
+    color: white;
+}
+#faq_list {
+    margin-bottom: 3rem;
+}
