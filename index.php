@@ -164,6 +164,7 @@
             <a href="" class="p-2"><i class="fa-brands fa-instagram"></i></a>
         </div>
 
+        <a href="register.php" class="">REGISTER</a>
     </footer>
 </body>
 </html>
