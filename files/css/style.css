@@ -90,13 +90,20 @@ nav ul li a {
     height: 30rem;
     width: 100%;
     margin-bottom: 2rem;
+    position: relative;
 }
 #news_element img{
     height: 100%;
     object-fit: cover;
+    width: 60%;
+    position: absolute;
 }
 #news_element #news_text{
-    margin: 1rem 2rem 0rem 2rem;
+    margin: 0rem 2rem 0rem 2rem;
+    position: absolute;
+    width: 50%;
+    left: 0;
+    height: 100%;
 }
 #games {
     display: flex;
