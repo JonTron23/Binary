@@ -152,6 +152,18 @@
                     </div>
                 </li>
             </ul>
+
+            <form action="send_email.php" method="post" class="flex flex-col">
+                <label for="name">Name</label>
+                    <input type="text" name="name" required>
+                <label for="email">E-Mail</label>
+                    <input type="email" name="email" required>
+                <label for="reference">Reference</label>
+                    <input type="text" name="reference" required>
+                <label for="message">Message</label>
+                    <textarea name="msg" id="msg" cols="30" rows="10" required></textarea>
+                <input type="submit">
+            </form>
         </section>
     </main>
     <footer class="flex">
@@ -164,6 +176,7 @@
             <a href="" class="p-2"><i class="fa-brands fa-instagram"></i></a>
         </div>
 
+        <a href="register.php" class="">REGISTER</a>
     </footer>
 </body>
 </html>
