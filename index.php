@@ -15,7 +15,7 @@
 <body>
     <header>
         <nav>
-            <ul class="grid grid-cols-7 px-4">
+            <ul class="grid grid-cols-8 px-4">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#home">About</a></li>
                 <li><a href="#home">Games</a></li>
@@ -23,10 +23,39 @@
                 <li><a href="#home">Media</a></li>
                 <li><a href="#home">Partner</a></li>
                 <li><a href="#home">Q&A</a></li>
+                <li class="cursor-pointer" id="myBtn"><i class="fa-solid fa-arrow-right-to-bracket"></i></li>
+
             </ul>
         </nav>
     </header>
     <main>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content bg-black flex">
+        <form class="flex flex-col w-1/2 justify-center pl-6" action="login.php" method="post">
+        
+        <div class="login_input_box flex flex-col mb-8">
+            <input class="login_input z-10" type="email" required>
+            <label class="login_label pb-2 z-0" for="email">E-Mail</label>
+        </div>
+        <div class="login_input_box flex flex-col mb-4">
+            <input class="login_input z-10" type="password" required>
+            <label class="login_label pb-2 z-0" for="password">Password</label>
+        </div>
+            <a href="change_pw.php">Change Password</a>
+        </form>
+        <div class="login_logo w-1/2 h-80 flex justify-center items-center">
+            <img class="logo w-60" src="files/media/Logo_Design/Logo_Design_White.png" alt="logo">
+        </div>
+        <span class="h-1/2 close">&times;</span>
+    </div>
+
+    </div>
+
+
         <section id="welcome">
             <h1 class="title">Welcome to Binary Gaming</h1>
             <img class="logo" src="files/media/Logo_Design/Logo_Design_White.png" alt="logo">
@@ -178,5 +207,32 @@
 
         <a href="register.php" class="">REGISTER</a>
     </footer>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+        modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+        modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+        }
+    </script>
 </body>
 </html>
