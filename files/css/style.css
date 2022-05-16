@@ -201,3 +201,22 @@ label a {
   input:focus {
     outline: none;
   }
+
+  .player_info {
+      width: 65%;
+      margin-top: 3rem;
+  }
+  .player_info h1 {
+    font-size: 5rem;
+    margin-bottom: 2rem;
+  }
+  .player_info p {
+    font-size: 2rem;
+  }
+  .player_img {
+      width: 30%;
+      margin-left: 5%;
+  }
+  .player_img img {
+      height: 80%;
+  }
