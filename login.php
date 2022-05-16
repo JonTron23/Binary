@@ -15,9 +15,9 @@
 
     if($user !== false && password_verify($password, $user['password'])) {
         $_SESSION['userid'] = $user['id'];
-        die('Login succeed')
+        die('Login succeed');
     } else {
-        $errorMessage = "E-Mail or Password is invalid"
+        $errorMessage = "E-Mail or Password is invalid";
     }
 
     ?>
