@@ -82,15 +82,15 @@
         <section id="games">
             <div id="game_card">
                 <h2>Rainbow Six Siege</h2>
-                <a href=""><img src="files/media/rainbow.jpg" alt=""></a>
+                <a href="teams.php"><img src="files/media/rainbow.jpg" alt=""></a>
             </div>
             <div id="game_card">
                 <h2>League of Legends</h2>
-                <a href=""><img src="files/media/lol.jpg" alt=""></a>
+                <a href="teams.php"><img src="files/media/lol.jpg" alt=""></a>
             </div>
             <div id="game_card">
                 <h2>CSGO</h2>
-                <a href=""><img src="files/media/csgo.jpg" alt=""></a>
+                <a href="teams.php"><img src="files/media/csgo.jpg" alt=""></a>
             </div>
 
 
