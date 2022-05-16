@@ -108,12 +108,14 @@ nav ul li a {
     height: 30rem;
     position: relative;
 }
-#game_card h2 {
+#game_card h2,
+.member h2 {
     position: absolute;
     bottom: -1rem;
     display: none;
 }
-#game_card:hover h2{
+#game_card:hover h2,
+.member:hover h2 {
     display: block;
     bottom: 0;
     width: 100%;
