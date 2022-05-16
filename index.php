@@ -7,6 +7,7 @@
 
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="files/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -45,7 +46,12 @@
             <input class="login_input z-10" type="password" required>
             <label class="login_label pb-2 z-0" for="password">Password</label>
         </div>
+        <div class="flex justify-between">
             <a href="change_pw.php">Change Password</a>
+            <a id="" href="register.php">Sign Up</a>
+        </div>
+            
+
         </form>
         <div class="login_logo w-1/2 h-80 flex justify-center items-center">
             <img class="logo w-60" src="files/media/Logo_Design/Logo_Design_White.png" alt="logo">
