@@ -171,23 +171,86 @@
         <section id="partner">
             <h1>COMMING SOON!</h1>
         </section>
-        <section id="qa">
-            <ul id="faq_list">
+        <section id="qa" class="flex justify-center">
+            <ul id="faq_list" class="w-1/2 flex flex-col items-center">
                 <li class="faq_element">
                     <div class="faq_header">
                         <div class="question">
-                            <div><h2>question</h2></div>
-                            
+                        <h2>question</h2>
+                        </div>
+                        
+                            <i class="fa-solid fa-plus"></i>
+                     
+                    </div>
+                    <div class="faq_footer inactive">
+                        <div class="answer">
+                            <p>answer asdkfja asdfasdf asdfklasjdfö asdfjasdlf asdfs dfsdf df d dlöfs</p>
                         </div>
                     </div>
-                    <div class="faq_footer">
+                </li>
+                <li class="faq_element">
+                    <div class="faq_header">
+                        <div class="question">
+                        <h2>question</h2>
+                        </div>
+                        <div class="accordion">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="faq_footer inactive">
+                        <div class="answer">
+                            <p>answer asdkfja asdfasdf asdfklasjdfö asdfjasdlf asdfs dfsdf df d dlöfs</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="faq_element">
+                    <div class="faq_header">
+                        <div class="question">
+                        <h2>question</h2>
+                        </div>
+                        <div class="accordion">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="faq_footer inactive">
+                        <div class="answer">
+                            <p>answer asdkfja asdfasdf asdfklasjdfö asdfjasdlf asdfs dfsdf df d dlöfs</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="faq_element">
+                    <div class="faq_header">
+                        <div class="question">
+                        <h2>question</h2>
+                        </div>
+                        <div class="accordion">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="faq_footer inactive">
+                        <div class="answer">
+                            <p>answer asdkfja asdfasdf asdfklasjdfö asdfjasdlf asdfs dfsdf df d dlöfs</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="faq_element">
+                    <div class="faq_header">
+                        <div class="question">
+                        <h2>question</h2>
+                        </div>
+                        <div class="accordion">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="faq_footer inactive">
                         <div class="answer">
                             <p>answer asdkfja asdfasdf asdfklasjdfö asdfjasdlf asdfs dfsdf df d dlöfs</p>
                         </div>
                     </div>
                 </li>
             </ul>
-
+        </section>
+        <section id="contact">
             <form action="send_email.php" method="post" class="flex flex-col">
                 <label for="name">Name</label>
                     <input type="text" name="name" required>
@@ -239,6 +302,15 @@
             modal.style.display = "none";
         }
         }
+
+
+
+        //open faq
+        $('.faq_element').click(function() {
+            $('.faq_element>.faq_footer.active').toggleClass('active inactive');
+            $(this).children('.faq_footer').toggleClass('inactive active');
+            $(this).children('.fa_solid').toggleClass('fa-plus fa-minus');  
+        })
     </script>
 </body>
 </html>
