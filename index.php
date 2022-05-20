@@ -266,7 +266,7 @@
     </main>
     <footer class="flex">
     <i class="fa-solid fa-copyright"></i>
-    <a href="">Impressum</a>
+    <a href="impressum.php">Impressum</a>
         <div class="socialIcons ">
             <a href="" class="p-2"><i class="fa-brands fa-youtube"></i></a>
             <a href="" class="p-2"><i class="fa-brands fa-twitter"></i></a>
