@@ -206,3 +206,33 @@ label a {
   input:focus {
     outline: none;
   }
+  .news_slider {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    height: 30rem;
+  }
+  .news_element {
+      background: url("../media/mountain.jpg");
+      background-size: cover;
+      width: 20%;
+      border-radius: 10%;
+      position: relative;
+      overflow: hidden;
+
+  }
+  .news_text {
+    position: absolute;
+    bottom: -6rem;
+    width: 100%;
+    padding: 0 1rem;
+
+  }
+  .news_element:hover .news_text {
+        display: block;
+        bottom: 0;
+        width: 100%;
+        background: rgb(0,0,0);
+        background: linear-gradient(0deg, rgba(0,0,0,0.5046393557422969) 75%, rgba(0,212,255,0) 100%);
+}
