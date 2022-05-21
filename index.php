@@ -7,12 +7,27 @@
 
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="files/js/preloader.js"></script>
     <link rel="stylesheet" href="files/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Document</title>
 </head>
-<body>
+<body class="preloader-site">
+    <script>
+        $(window).on('load', function() {
+            $('.preloader_wrapper').delay(2000).fadeOut(1000);
+            $('body').removeClass('preloader-site');
+        })
+    </script>
+    <div class="preloader_wrapper">
+        <div class="preloader">
+            <img src="files/media/fsp.gif" alt="">
+        </div>
+    </div>
+
+
     <header>
         <nav>
             <ul class="grid grid-cols-8 px-4">
@@ -24,10 +39,10 @@
                 <li><a href="#home">Partner</a></li>
                 <li><a href="#home">Q&A</a></li>
                 <li class="cursor-pointer" id="myBtn"><i class="fa-solid fa-arrow-right-to-bracket"></i></li>
-
             </ul>
         </nav>
     </header>
+    <a href="account.php"><i class="fa-solid fa-user"></i></a>
     <main>
 
     <!-- The Modal -->
@@ -45,7 +60,12 @@
             <input class="login_input z-10" type="password" required>
             <label class="login_label pb-2 z-0" for="password">Password</label>
         </div>
+        <div class="flex justify-between">
             <a href="change_pw.php">Change Password</a>
+            <a id="" href="register.php">Sign Up</a>
+        </div>
+            
+
         </form>
         <div class="login_logo w-1/2 h-80 flex justify-center items-center">
             <img class="logo w-60" src="files/media/Logo_Design/Logo_Design_White.png" alt="logo">
@@ -67,30 +87,96 @@
 
         <section id="about">
             <div id="timeline">
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                <ul class="timeline_list">
+                    <li>
+                        <div class="timeline_element">
+                            <h3>Title</h3>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline_element">
+                            <h3>Title</h3>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>                          
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline_element">
+                            <h3>Title</h3>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>                            
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline_element">
+                            <h3>Title</h3>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>                           
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline_element">
+                            <h3>Title</h3>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>                        
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline_element">
+                            <h3>Title</h3>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>                           
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline_element">
+                            <h3>Title</h3>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>                          
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline_element">
+                            <h3>Title</h3>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>                         
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline_element">
+                            <h3>Title</h3>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>                         
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline_element">
+                            <h3>Title</h3>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>                         
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline_element">
+                            <h3>Title</h3>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>                         
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline_element">
+                            <h3>Title</h3>
+                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>                         
+                        </div>
+                    </li>
                 </ul>
             </div>
         </section>
+
+
         <section id="games">
             <div id="game_card">
                 <h2>Rainbow Six Siege</h2>
-                <a href=""><img src="files/media/rainbow.jpg" alt=""></a>
+                <a href="teams.php"><img src="files/media/rainbow.jpg" alt=""></a>
             </div>
             <div id="game_card">
                 <h2>League of Legends</h2>
-                <a href=""><img src="files/media/lol.jpg" alt=""></a>
+                <a href="teams.php"><img src="files/media/lol.jpg" alt=""></a>
             </div>
             <div id="game_card">
                 <h2>CSGO</h2>
-                <a href=""><img src="files/media/csgo.jpg" alt=""></a>
+                <a href="teams.php"><img src="files/media/csgo.jpg" alt=""></a>
             </div>
 
 
@@ -160,23 +246,86 @@
         <section id="partner">
             <h1>COMMING SOON!</h1>
         </section>
-        <section id="qa">
-            <ul id="faq_list">
+        <section id="qa" class="flex justify-center">
+            <ul id="faq_list" class="w-1/2 flex flex-col items-center">
                 <li class="faq_element">
                     <div class="faq_header">
                         <div class="question">
-                            <div><h2>question</h2></div>
-                            
+                        <h2>question</h2>
+                        </div>
+                        
+                            <i class="fa-solid fa-plus"></i>
+                     
+                    </div>
+                    <div class="faq_footer inactive">
+                        <div class="answer">
+                            <p>answer asdkfja asdfasdf asdfklasjdfö asdfjasdlf asdfs dfsdf df d dlöfs</p>
                         </div>
                     </div>
-                    <div class="faq_footer">
+                </li>
+                <li class="faq_element">
+                    <div class="faq_header">
+                        <div class="question">
+                        <h2>question</h2>
+                        </div>
+                        <div class="accordion">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="faq_footer inactive">
+                        <div class="answer">
+                            <p>answer asdkfja asdfasdf asdfklasjdfö asdfjasdlf asdfs dfsdf df d dlöfs</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="faq_element">
+                    <div class="faq_header">
+                        <div class="question">
+                        <h2>question</h2>
+                        </div>
+                        <div class="accordion">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="faq_footer inactive">
+                        <div class="answer">
+                            <p>answer asdkfja asdfasdf asdfklasjdfö asdfjasdlf asdfs dfsdf df d dlöfs</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="faq_element">
+                    <div class="faq_header">
+                        <div class="question">
+                        <h2>question</h2>
+                        </div>
+                        <div class="accordion">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="faq_footer inactive">
+                        <div class="answer">
+                            <p>answer asdkfja asdfasdf asdfklasjdfö asdfjasdlf asdfs dfsdf df d dlöfs</p>
+                        </div>
+                    </div>
+                </li>
+                <li class="faq_element">
+                    <div class="faq_header">
+                        <div class="question">
+                        <h2>question</h2>
+                        </div>
+                        <div class="accordion">
+                            <i class="fa-solid fa-plus"></i>
+                        </div>
+                    </div>
+                    <div class="faq_footer inactive">
                         <div class="answer">
                             <p>answer asdkfja asdfasdf asdfklasjdfö asdfjasdlf asdfs dfsdf df d dlöfs</p>
                         </div>
                     </div>
                 </li>
             </ul>
-
+        </section>
+        <section id="contact">
             <form action="send_email.php" method="post" class="flex flex-col">
                 <label for="name">Name</label>
                     <input type="text" name="name" required>
@@ -192,7 +341,7 @@
     </main>
     <footer class="flex">
     <i class="fa-solid fa-copyright"></i>
-    <a href="">Impressum</a>
+    <a href="impressum.php">Impressum</a>
         <div class="socialIcons ">
             <a href="" class="p-2"><i class="fa-brands fa-youtube"></i></a>
             <a href="" class="p-2"><i class="fa-brands fa-twitter"></i></a>
@@ -228,6 +377,42 @@
             modal.style.display = "none";
         }
         }
+
+
+
+        //open faq
+        $('.faq_element').click(function() {
+            $('.faq_element>.faq_footer.active').toggleClass('active inactive');
+            $(this).children('.faq_footer').toggleClass('inactive active');
+            $(this).children('.fa_solid').toggleClass('fa-plus fa-minus');  
+        })
+
+
+
+
+        //timeline
+        var items = document.querySelectorAll(".timeline_list li");
+        console.log(items);
+        function isElementInViewport(el) {
+            var rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <=
+                    (window.innerheight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerwidth || document.documentElement.clientWidth)
+            );
+        }
+        function callbackFunc() {
+            for (var i = 0; i < items.length; i++) {
+            if (isElementInViewport(items[i])) {
+                items[i].classList.add("in-view");
+            }
+            }
+        }
+        window.addEventListener("load", callbackFunc);
+        window.addEventListener("resize", callbackFunc);
+        window.addEventListener("scroll", callbackFunc);
     </script>
 
 
