@@ -183,38 +183,33 @@
         </section>
 
         <section id="news" class="flex flex-col justify-around">
-            <div id="news_element">
-                <img src="files/media/mountain.jpg" alt="">
-                <div id="news_text">
+            <div class="news_slider"> 
+            <div class="news_element">
+                <div class="news_text">
                     <h1 class="news_title">Test</h1>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                        At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. 
                     </p>
                 </div>
             </div>
 
-            <div id="news_element" class="">
-                <img src="files/media/mountain.jpg" alt="">
-                <div id="news_text">
+            <div class="news_element" class="">
+                <div class="news_text">
                     <h1 class="news_title">Test</h1>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                        At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. 
                     </p>
                 </div>
             </div>
 
-            <div id="news_element" class="">
-                <img src="files/media/mountain.jpg" alt="">
-                <div id="news_text">
+            <div class="news_element" class="">
+                <div class="news_text">
                     <h1 class="news_title">Test</h1>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
-                        At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. 
+                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. 
                     </p>
                 </div>
             </div>
 
 
-
+            </div>
 
         </section>
 
@@ -419,5 +414,70 @@
         window.addEventListener("resize", callbackFunc);
         window.addEventListener("scroll", callbackFunc);
     </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

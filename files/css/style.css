@@ -93,13 +93,20 @@ nav ul li a {
     height: 30rem;
     width: 100%;
     margin-bottom: 2rem;
+    position: relative;
 }
 #news_element img{
     height: 100%;
     object-fit: cover;
+    width: 60%;
+    position: absolute;
 }
 #news_element #news_text{
-    margin: 1rem 2rem 0rem 2rem;
+    margin: 0rem 2rem 0rem 2rem;
+    position: absolute;
+    width: 50%;
+    left: 0;
+    height: 100%;
 }
 #games {
     display: flex;
@@ -218,6 +225,36 @@ label a {
   input:focus {
     outline: none;
   }
+  .news_slider {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    height: 30rem;
+  }
+  .news_element {
+      background: url("../media/mountain.jpg");
+      background-size: cover;
+      width: 20%;
+      border-radius: 10%;
+      position: relative;
+      overflow: hidden;
+
+  }
+  .news_text {
+    position: absolute;
+    bottom: -6rem;
+    width: 100%;
+    padding: 0 1rem;
+
+  }
+  .news_element:hover .news_text {
+        display: block;
+        bottom: 0;
+        width: 100%;
+        background: rgb(0,0,0);
+        background: linear-gradient(0deg, rgba(0,0,0,0.5046393557422969) 75%, rgba(0,212,255,0) 100%);
+}
 
   .player_info {
       width: 65%;
