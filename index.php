@@ -39,10 +39,10 @@
                 <li><a href="#home">Partner</a></li>
                 <li><a href="#home">Q&A</a></li>
                 <li class="cursor-pointer" id="myBtn"><i class="fa-solid fa-arrow-right-to-bracket"></i></li>
-
             </ul>
         </nav>
     </header>
+    <a href="account.php"><i class="fa-solid fa-user"></i></a>
     <main>
 
     <!-- The Modal -->
