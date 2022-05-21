@@ -213,35 +213,38 @@
 
         </section>
 
-        <!-- <section id="media">
-            <div id="twitter">
-                <a class="twitter-timeline" href="https://twitter.com/TwitterDev?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            </div>
-            <div id="instagram" class="bg-red-200">
-                <h1>instagram</h1>
-            </div>
-            <div id="youtube" class="bg-green-200">
-                <iframe width="420" height="315"
-                    src="https://www.youtube.com/embed/tgbNymZ7vqY">
-                </iframe>
-            </div>
+        <section id="media" class="flex justify-around">
             
-            <div id="twitch-embed" class="bg-blue-200"></div>
-            <script src="https://embed.twitch.tv/embed/v1.js"></script>
+            <div id="twitter">
+                <h1 class="mb-12">Twitter</h1>
+                <a class="twitter-timeline" href="https://twitter.com/BYGesports" data-tweet-limit="2" data-width="399" ></a>
+                <script async src="http://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+            <div class="ty">
+                <h1 class="mb-12">Youtube</h1>
+                <div id="youtube" class="mb-32">
+                    <iframe class="w-full" width="600" height="340" src="https://www.youtube.com/embed?max-results=1&controls=0&showinfo=0&rel=0&listType=user_uploads&list=bygesports" frameborder="0" allowfullscreen></iframe>
+                </div>
+                
+                <h1 class="mb-12">Twitch</h1>
+                <div id="twitch-embed" class="bg-blue-200"></div>
+                <script src="https://embed.twitch.tv/embed/v1.js"></script>
 
-            <script type="text/javascript">
-                new Twitch.Embed("twitch-embed", {
-                    width: 854,
-                    height: 480,
-                    channel: "monstercat",
-                    // Only needed if this page is going to be embedded on other websites
-                    parent: ["embed.example.com", "othersite.example.com"]
-                });
+                <script type="text/javascript">
+                    new Twitch.Embed("twitch-embed", {
+                        width: 854,
+                        height: 480,
+                        channel: "bygesports",
+                        // Only needed if this page is going to be embedded on other websites
+                        parent: ["google.com", "google.com"]
+                    });
             </script>
+            </div>
+
         
         
         
-        </section> -->
+        </section>
 
         <section id="partner">
             <h1>COMMING SOON!</h1>
