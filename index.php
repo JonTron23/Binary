@@ -8,12 +8,26 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="files/js/preloader.js"></script>
     <link rel="stylesheet" href="files/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Document</title>
 </head>
-<body>
+<body class="preloader-site">
+    <script>
+        $(window).on('load', function() {
+            $('.preloader_wrapper').delay(2000).fadeOut(1000);
+            $('body').removeClass('preloader-site');
+        })
+    </script>
+    <div class="preloader_wrapper">
+        <div class="preloader">
+            <img src="files/media/fsp.gif" alt="">
+        </div>
+    </div>
+
+
     <header>
         <nav>
             <ul class="grid grid-cols-8 px-4">
