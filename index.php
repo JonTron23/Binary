@@ -183,7 +183,7 @@
         </section>
 
         <section id="news" class="flex flex-col justify-around">
-            <h1>News</h1>
+            <h1 class="title">News</h1>
             <div class="news_slider"> 
                 <div class="news_element">
                     <p class="news_time"><i class="fa-solid fa-clock"></i> 23.05.2022</p>
