@@ -328,17 +328,31 @@
                 </li>
             </ul>
         </section>
-        <section id="contact">
-            <form action="send_email.php" method="post" class="flex flex-col">
-                <label for="name">Name</label>
-                    <input type="text" name="name" required>
-                <label for="email">E-Mail</label>
-                    <input type="email" name="email" required>
-                <label for="reference">Reference</label>
-                    <input type="text" name="reference" required>
-                <label for="message">Message</label>
-                    <textarea name="msg" id="msg" cols="30" rows="10" required></textarea>
-                <input type="submit">
+        <section id="contact" class="flex justify-center">
+            <form action="send_email.php" method="post" class="flex flex-col w-1/2">
+
+            <div class="contact_input_box">
+                <label class="contact_label" for="name">Name</label>
+                <input class="contact_input" type="text" name="name" required>
+            </div>
+
+                <div class="contact_input_box">
+                    <label class="contact_label" for="email">E-Mail</label>
+                    <input class="contact_input" type="email" name="email" required>
+                </div>
+                
+                <div class="contact_input_box">
+                    <label class="contact_label" for="reference">Reference</label>
+                    <input class="contact_input" type="text" name="reference" required>
+                </div>
+                
+                <div class="contact_input_box">
+                    <label class="contact__label textarea_label" for="message">Message</label>
+                    <textarea class="contact_input" name="msg" id="msg" cols="30" rows="10" required></textarea>    
+                </div>
+            
+                
+                    <input type="submit">
             </form>
         </section>
     </main>
