@@ -237,6 +237,15 @@ label a {
   input:focus {
     outline: none;
   }
+  .submit {
+    width: 10%;
+    padding: 1%;
+    color: white;
+    font-family: Furore;
+  }
+  .submit:hover {
+    cursor: pointer;
+  }
   .news_slider {
     display: flex;
     flex-direction: row;
