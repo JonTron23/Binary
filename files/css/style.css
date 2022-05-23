@@ -235,7 +235,7 @@ label a {
   .news_element {
       background: url("../media/mountain.jpg");
       background-size: cover;
-      width: 20%;
+      width: 30%;
       border-radius: 10%;
       position: relative;
       overflow: hidden;
@@ -243,10 +243,19 @@ label a {
   }
   .news_text {
     position: absolute;
-    bottom: -6rem;
+    bottom: -26%;
     width: 100%;
-    padding: 0 1rem;
-
+    padding: 7%;
+  }
+  .news_title {
+    font-size: 3rem;
+    margin-bottom: 1%;
+  }
+  .news_time {
+    position: absolute;
+    top: 0%;
+    right: -25%;
+    padding: 2% 10% 2% 5%;
   }
   .news_element:hover .news_text {
         display: block;
@@ -254,6 +263,11 @@ label a {
         width: 100%;
         background: rgb(0,0,0);
         background: linear-gradient(0deg, rgba(0,0,0,0.5046393557422969) 75%, rgba(0,212,255,0) 100%);
+}
+.news_element:hover .news_time {
+  right: -1%;
+  background: rgb(0,0,0);
+        background: linear-gradient(-90deg, rgba(0,0,0,0.5046393557422969) 75%, rgba(0,212,255,0) 100%);
 }
 
   .player_info {
