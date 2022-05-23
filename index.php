@@ -250,7 +250,7 @@
             <h1>COMMING SOON!</h1>
         </section>
         <section id="qa" class="flex justify-center">
-            <ul id="faq_list" class="w-1/2 flex flex-col items-center">
+            <ul id="faq_list" class="w-5/12 flex flex-col items-center">
                 <li class="faq_element">
                     <div class="faq_header">
                         <div class="question">
@@ -327,33 +327,36 @@
                     </div>
                 </li>
             </ul>
+
+
+            <form action="send_email.php" method="post" class="flex flex-col w-5/12">
+
+<div class="contact_input_box">
+    <label class="contact_label" for="name">Name</label>
+    <input class="contact_input" type="text" name="name" required>
+</div>
+
+    <div class="contact_input_box">
+        <label class="contact_label" for="email">E-Mail</label>
+        <input class="contact_input" type="email" name="email" required>
+    </div>
+    
+    <div class="contact_input_box">
+        <label class="contact_label" for="reference">Reference</label>
+        <input class="contact_input" type="text" name="reference" required>
+    </div>
+    
+    <div class="contact_input_box">
+        <label class="contact__label textarea_label" for="message">Message</label>
+        <textarea class="contact_input" name="msg" id="msg" cols="30" rows="10" required></textarea>    
+    </div>
+
+    
+        <input class="submit" type="submit">
+</form>
         </section>
         <section id="contact" class="flex justify-center">
-            <form action="send_email.php" method="post" class="flex flex-col w-1/2">
 
-            <div class="contact_input_box">
-                <label class="contact_label" for="name">Name</label>
-                <input class="contact_input" type="text" name="name" required>
-            </div>
-
-                <div class="contact_input_box">
-                    <label class="contact_label" for="email">E-Mail</label>
-                    <input class="contact_input" type="email" name="email" required>
-                </div>
-                
-                <div class="contact_input_box">
-                    <label class="contact_label" for="reference">Reference</label>
-                    <input class="contact_input" type="text" name="reference" required>
-                </div>
-                
-                <div class="contact_input_box">
-                    <label class="contact__label textarea_label" for="message">Message</label>
-                    <textarea class="contact_input" name="msg" id="msg" cols="30" rows="10" required></textarea>    
-                </div>
-            
-                
-                    <input type="submit">
-            </form>
         </section>
     </main>
     <footer class="flex">
