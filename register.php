@@ -1,4 +1,7 @@
+
+<?php
 include('db-connector.inc.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,10 +15,20 @@ include('db-connector.inc.php');
 </head>
 <body class="flex flex-col justify-center items-center h-screen">
     <?php
+        // SQL-Statement erstellen 
+        $insert = "Insert into users (firstname, lastname, email, password) values (?,?,?,?)";
+
+        // SQL-Statement vorbereiten
+        $stmt = $mysqli->prepare($insert);
+        if ($stmt === false) {
+            $error .= 'prepare() failed ' . $mysqli->error . '<br />';
+        }
         $error = '';
-        $fname = $lname = $email = $password = $rpassword = '';
+        $firstname = $lastname = $email = $password = $rpassword = '';
 
         if($_SERVER['REQUEST_METHOD'] == "POST"){
+                $lastname=trim($_POST["lastname"]);
+                $firstname=trim($_POST["firstname"]);
                 $email=trim($_POST["email"]);
                 $password=trim($_POST["password"]);
                 $rpassword=trim($_POST["rpassword"]);
@@ -32,20 +45,29 @@ include('db-connector.inc.php');
                         echo $error_password;
                     }
                     if($password === $rpassword){
-                        
+                            // Daten an das SQL-Statement binden
+                            if (!$stmt->bind_param('ssss', $firstname, $lastname, $email, $password)) {
+                            $error .= 'bind_param() failed ' . $mysqli->error . '<br />';
+                        }
+
+                            // SQL-Statement ausführen
+                            if (!$stmt->execute()) {
+                            $error .= 'execute() failed ' . $mysqli->error . '<br />';
+                        }
                     }
                 }
-            }
+        }
+
     ?>
 
     <form class="flex flex-col w-1/2" action="" method="post">
         <div class="register_input_box">
-            <input class="register_input" type="text" id="fname" name="fname" value="<?php echo $fname ?>" required>
-            <label class="register_label" for="fname">Firstname</label>
+            <input class="register_input" type="text" id="firstname" name="firstname" value="<?php echo $firstname ?>" required>
+            <label class="register_label" for="firstname">Firstname</label>
         </div>
         <div class="register_input_box">
-            <input class="register_input" type="text" id="lname" name="lname"  value="<?php echo $lname ?>" required>
-            <label class="register_label" for="lname">Lastname</label>
+            <input class="register_input" type="text" id="lastname" name="lastname"  value="<?php echo $lastname ?>" required>
+            <label class="register_label" for="lastname">Lastname</label>
         </div>
         <div class="register_input_box">
             <input class="register_input" type="email" id="email" name="email" pattern="([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,}$" value="<?php echo $email ?>" required>

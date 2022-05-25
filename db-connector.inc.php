@@ -1,9 +1,9 @@
 <?php
 // Variabeln deklarieren
-$host = 'ht25n.myd.infomaniak.com'; // host
-$username = 'ht25n_admin'; // username
-$password = 'M-cd9ZxkoN1'; // password
-$database = 'ht25n_binary'; // database
+$host = 'localhost'; // host
+$username = 'admin'; // username
+$password = 'admin'; // password
+$database = 'binary'; // database
 
 
 
