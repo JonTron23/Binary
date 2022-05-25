@@ -57,13 +57,14 @@ include('db-connector.inc.php');
         <form class="flex flex-col w-1/2 justify-center pl-6" action="login.php" method="post">
         
         <div class="login_input_box flex flex-col mb-8">
-            <input class="login_input z-10" type="email" required>
+            <input class="login_input z-10" type="email" name="email" required>
             <label class="login_label pb-2 z-0" for="email">E-Mail</label>
         </div>
         <div class="login_input_box flex flex-col mb-4">
-            <input class="login_input z-10" type="password" required>
+            <input class="login_input z-10" type="password" name="password" required>
             <label class="login_label pb-2 z-0" for="password">Password</label>
         </div>
+        <input type="submit" value="Submit" id="submit">
         <div class="flex justify-between">
             <a href="change_pw.php">Change Password</a>
             <a id="" href="register.php">Sign Up</a>
