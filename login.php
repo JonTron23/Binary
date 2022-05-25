@@ -11,18 +11,31 @@ include('db-connector.inc.php');
 </head>
 <body>
     <?php
-    session_start();
 
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $error = '';
+    $email = '';
+    $password = '';
+    $query = 'select email, password from users where email = ? and password = ?';
+    $stmt = $mysqli->prepare($query);
 
-    if($user !== false && password_verify($password, $user['password'])) {
-        $_SESSION['userid'] = $user['id'];
-        die('Login succeed');
-    } else {
-        $errorMessage = "E-Mail or Password is invalid";
+    if($_SERVER['REQUEST_METHOD'] == "POST"){
+        $email=trim($_POST["email"]);
+        $password=trim($_POST["password"]);
+
+        if(isset($email, $password)){
+            $stmt->bind_param('ss', $email, $password);
+            $stmt->execute();
+            $result=$stmt->get_result();
+            if(mysqli_num_rows($result) == 1){
+                while($row = $result->fetch_assoc()){
+                    echo "email: " . $row['email'] . ", password : " . $row['password'] . "<br />";
+                }    
+            } else {
+                echo('Wrong User / Password');
+            }
+                $result->free();    
+        }
     }
-
     ?>
     <h1>Logged In</h1>
 </body>
