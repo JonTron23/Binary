@@ -23,14 +23,19 @@ include('db-connector.inc.php');
         $password=trim($_POST["password"]);
 
         if(isset($email, $password)){
-            $hashed_password = password_hash($password, PASSWORD_BCRYPT);
             $stmt->bind_param('ss', $email, $password);
             $stmt->execute();
             $result=$stmt->get_result();
             if(mysqli_num_rows($result) == 1){
                 while($row = $result->fetch_assoc()){
-                    echo "email: " . $row['email'] . ", password : " . $row['password'] . "<br />";
+                    $db_password = $row['password'];
                 }    
+                if(password_verify($password, $db_password)) {
+                    echo "email: " . $row['email'] . ", password : " . $row['password'] . "<br />";
+                } else {
+                    echo('du hurensohn');
+                }
+                
             } else {
                 echo('Wrong User / Password');
             }

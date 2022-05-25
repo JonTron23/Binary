@@ -183,8 +183,6 @@ include('db-connector.inc.php');
                 <h2>CSGO</h2>
                 <a href="teams.php"><img src="files/media/csgo.jpg" alt=""></a>
             </div>
-
-
         </section>
 
         <section id="news" class="flex flex-col justify-around">
