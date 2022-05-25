@@ -15,7 +15,7 @@ include('db-connector.inc.php');
     $error = '';
     $email = '';
     $password = '';
-    $query = 'select email, password from users where email = ? and password = ?';
+    $query = 'select email, password from users where email = ?';
     $stmt = $mysqli->prepare($query);
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
@@ -23,23 +23,18 @@ include('db-connector.inc.php');
         $password=trim($_POST["password"]);
 
         if(isset($email, $password)){
-            $stmt->bind_param('ss', $email, $password);
+            $stmt->bind_param('s', $email);
             $stmt->execute();
             $result=$stmt->get_result();
-            if(mysqli_num_rows($result) == 1){
-                while($row = $result->fetch_assoc()){
-                    $db_password = $row['password'];
-                }    
-                if(password_verify($password, $db_password)) {
+
+            while($row = $result->fetch_assoc()){
+                if(password_verify($password, $row['password'])){
                     echo "email: " . $row['email'] . ", password : " . $row['password'] . "<br />";
                 } else {
-                    echo('du hurensohn');
+                    echo('wrong password');
                 }
-                
-            } else {
-                echo('Wrong User / Password');
-            }
-                $result->free();    
+            }    
+            $result->free();    
         }
     }
     ?>
