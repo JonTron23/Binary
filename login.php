@@ -23,6 +23,7 @@ include('db-connector.inc.php');
         $password=trim($_POST["password"]);
 
         if(isset($email, $password)){
+            $hashed_password = password_hash($password, PASSWORD_BCRYPT);
             $stmt->bind_param('ss', $email, $password);
             $stmt->execute();
             $result=$stmt->get_result();
