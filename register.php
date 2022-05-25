@@ -45,8 +45,9 @@ include('db-connector.inc.php');
                         echo $error_password;
                     }
                     if($password === $rpassword){
+                            $hashed_password = password_hash($password, PASSWORD_BCRYPT);
                             // Daten an das SQL-Statement binden
-                            if (!$stmt->bind_param('ssss', $firstname, $lastname, $email, $password)) {
+                            if (!$stmt->bind_param('ssss', $firstname, $lastname, $email, $hashed_password)) {
                             $error .= 'bind_param() failed ' . $mysqli->error . '<br />';
                         }
 
