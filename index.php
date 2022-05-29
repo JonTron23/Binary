@@ -1,6 +1,7 @@
 
 <?php
 include('db-connector.inc.php');
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +43,13 @@ include('db-connector.inc.php');
                 <li><a href="#home">Media</a></li>
                 <li><a href="#home">Partner</a></li>
                 <li><a href="#home">Q&A</a></li>
-                <li class="cursor-pointer" id="myBtn"><i class="fa-solid fa-arrow-right-to-bracket"></i></li>
+                <li class="cursor-pointer" id="myBtn">
+                    <?php if( !isset($_SESSION['email'])): ?>
+                        <i class='fa-solid fa-arrow-right-to-bracket'></i>
+                    <?php else: ?>
+                        <i class='fa-solid fa-user'></i>
+                    <?php endif; ?>
+                </li>
             </ul>
         </nav>
     </header>
