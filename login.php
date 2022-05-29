@@ -32,6 +32,7 @@ session_start();
                 if(password_verify($password, $row['password'])){
                     echo "email: " . $row['email'] . ", password : " . $row['password'] . "<br />";
                     $_SESSION["email"] = $email;
+                    $_SESSION["loggedIn"] = true;
                 } else {
                     echo('wrong password');
                 }

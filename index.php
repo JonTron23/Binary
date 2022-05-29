@@ -1,4 +1,3 @@
-
 <?php
 include('db-connector.inc.php');
 session_start();
@@ -20,6 +19,15 @@ session_start();
     <title>Document</title>
 </head>
 <body class="preloader-site">
+    <?php
+        if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout']))
+        {
+            session_destroy();
+            echo '<script type="text/javascript">',
+                    'alert("Logged Out");',
+                 '</script>';
+        }
+    ?>
     <script>
         $(window).on('load', function() {
             $('.preloader_wrapper').delay(2000).fadeOut(1000);
@@ -44,7 +52,7 @@ session_start();
                 <li><a href="#home">Partner</a></li>
                 <li><a href="#home">Q&A</a></li>
                 <li class="cursor-pointer" id="myBtn">
-                    <?php if( !isset($_SESSION['email'])): ?>
+                    <?php if( !isset($_SESSION['loggedIn'])): ?>
                         <i class='fa-solid fa-arrow-right-to-bracket'></i>
                     <?php else: ?>
                         <i class='fa-solid fa-user'></i>
@@ -53,7 +61,6 @@ session_start();
             </ul>
         </nav>
     </header>
-    <a href="account.php"><i class="fa-solid fa-user"></i></a>
     <main>
 
     <!-- The Modal -->
@@ -61,24 +68,31 @@ session_start();
 
     <!-- Modal content -->
     <div class="modal-content bg-black flex">
+    <?php if( !isset($_SESSION['loggedIn'])): ?>
         <form class="flex flex-col w-1/2 justify-center pl-6" action="login.php" method="post">
-        
-        <div class="login_input_box flex flex-col mb-8">
-            <input class="login_input z-10" type="email" name="email" required>
-            <label class="login_label pb-2 z-0" for="email">E-Mail</label>
+            <div class="login_input_box flex flex-col mb-8">
+                <input class="login_input z-10" type="email" name="email" required>
+                <label class="login_label pb-2 z-0" for="email">E-Mail</label>
+            </div>
+            <div class="login_input_box flex flex-col mb-4">
+                <input class="login_input z-10" type="password" name="password" required>
+                <label class="login_label pb-2 z-0" for="password">Password</label>
+            </div>
+                <input type="submit" value="Submit" id="submit">
+                <div class="flex justify-between">
+                    <a href="change_pw.php">Change Password</a>
+                    <a id="" href="register.php">Sign Up</a>
+                </div>
+        </form>                        
+    <?php else: ?>
+        <div class="buttons flex flex-col w-1/2 justify-center">
+            <a href="account.php">My Account</a>
+            <form action="" method="post">
+                <input type="submit" name="logout" value="Log Out" />
+            </form>
         </div>
-        <div class="login_input_box flex flex-col mb-4">
-            <input class="login_input z-10" type="password" name="password" required>
-            <label class="login_label pb-2 z-0" for="password">Password</label>
-        </div>
-        <input type="submit" value="Submit" id="submit">
-        <div class="flex justify-between">
-            <a href="change_pw.php">Change Password</a>
-            <a id="" href="register.php">Sign Up</a>
-        </div>
-            
+    <?php endif; ?>
 
-        </form>
         <div class="login_logo w-1/2 h-80 flex justify-center items-center">
             <img class="logo w-60" src="files/media/Logo_Design/Logo_Design_White.png" alt="logo">
         </div>
@@ -444,70 +458,5 @@ session_start();
         window.addEventListener("resize", callbackFunc);
         window.addEventListener("scroll", callbackFunc);
     </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>
