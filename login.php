@@ -1,5 +1,6 @@
 <?php
 include('db-connector.inc.php');
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,6 +31,7 @@ include('db-connector.inc.php');
             while($row = $result->fetch_assoc()){
                 if(password_verify($password, $row['password'])){
                     echo "email: " . $row['email'] . ", password : " . $row['password'] . "<br />";
+                    $_SESSION["email"] = $email;
                 } else {
                     echo('wrong password');
                 }
@@ -39,5 +41,6 @@ include('db-connector.inc.php');
     }
     ?>
     <h1>Logged In</h1>
+    <a href="index.php">Home</a>
 </body>
 </html>

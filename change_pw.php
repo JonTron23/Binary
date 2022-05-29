@@ -1,3 +1,7 @@
+<?php
+include('db-connector.inc.php');
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

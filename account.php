@@ -1,3 +1,7 @@
+<?php
+include('db-connector.inc.php');
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +16,18 @@
     <title>Document</title>
 </head>
 <body>
+    <?php
+        $query = 'select * from users where email = ?';
+        $stmt = $mysqli->prepare($query);
+        $stmt->bind_param('s', $_SESSION["email"]);
+        $stmt->execute();
+        $result=$stmt->get_result();
+        while($row = $result->fetch_assoc()){
+            $firstname = $row['firstname'];
+            $lastname = $row['lastname'];
+            $email = $row['email'];
+        }
+    ?>
 <header>
         <nav>
             <ul class="grid grid-cols-8 px-4">
@@ -32,7 +48,7 @@
                 type="text" 
                 id="fname" 
                 name="fname" 
-                value="<?php echo $fname ?>" 
+                value="<?php echo $firstname ?>" 
                 required>
             <label class="register_label" for="fname">Firstname</label>
         </div>
@@ -41,7 +57,7 @@
                 type="text" 
                 id="lname" 
                 name="lname"  
-                value="<?php echo $lname ?>" 
+                value="<?php echo $lastname ?>" 
                 required>
             <label class="register_label" for="lname">Lastname</label>
         </div>
