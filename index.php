@@ -207,32 +207,37 @@ session_start();
         </section>
 
         <section id="news" class="flex flex-col justify-around">
+            <h1 class="title">News</h1>
             <div class="news_slider"> 
-            <div class="news_element">
-                <div class="news_text">
-                    <h1 class="news_title">Test</h1>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. 
-                    </p>
+                <div class="news_element">
+                    <p class="news_time"><i class="fa-solid fa-clock"></i> 23.05.2022</p>
+                    <img class="news_img" src="files/media/mountain.jpg" alt="">
+                    <div class="news_text">
+                        <h1 class="news_title">Test</h1>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. 
+                        </p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="news_element" class="">
-                <div class="news_text">
-                    <h1 class="news_title">Test</h1>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. 
-                    </p>
+                <div class="news_element" class="">
+                    <p class="news_time"><i class="fa-solid fa-clock"></i> 23.05.2022</p>
+                    <img class="news_img" src="files/media/mountain.jpg" alt="">
+                    <div class="news_text">
+                        <h1 class="news_title">Test</h1>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. 
+                        </p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="news_element" class="">
-                <div class="news_text">
-                    <h1 class="news_title">Test</h1>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. 
-                    </p>
+                <div class="news_element" class="">
+                    <p class="news_time"><i class="fa-solid fa-clock"></i> 23.05.2022</p>
+                    <img class="news_img" src="files/media/mountain.jpg" alt="">
+                    <div class="news_text">
+                        <h1 class="news_title">Test</h1>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. 
+                        </p>
+                    </div>
                 </div>
-            </div>
-
-
             </div>
 
         </section>
