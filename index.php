@@ -276,7 +276,7 @@ session_start();
         </section>
 
         <section id="partner">
-            <h1>COMMING SOON!</h1>
+            <h1 clas="text-9xl p-12">Partners Comming Soon!</h1>
         </section>
         <section id="qa" class="flex justify-center">
             <ul id="faq_list" class="w-5/12 flex flex-col items-center">

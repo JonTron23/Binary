@@ -506,3 +506,10 @@ body.preloader-site {
     transform: translate(-50%, -50%);
     width: 120px;
 }
+#partner {
+  padding: 5rem;
+}
+#partner h1 {
+  font-size: 8rem;
+  text-align: center;
+}
