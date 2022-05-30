@@ -397,8 +397,6 @@ session_start();
             <a href="" class="p-2"><i class="fa-brands fa-twitch"></i></a>
             <a href="" class="p-2"><i class="fa-brands fa-instagram"></i></a>
         </div>
-
-        <a href="register.php" class="">REGISTER</a>
     </footer>
     <script>
         // Get the modal
