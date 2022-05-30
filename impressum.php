@@ -5,6 +5,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,18 +31,12 @@ session_start();
             </ul>
         </nav>
     </header>
-    <p>Colin Kaeser<br/>Im Obstgarten 5<br/>4105 Biel-Benken<br/>Schweiz<br/><strong>Email</strong>: info@binary-gaming.ch<br/><br/><strong>Disclaimer</strong><br/>The author assumes no liability for the correctness, accuracy, timeliness, reliability and completeness of the information.<br/>Liability claims against the author for material or immaterial damage resulting from access to, use or non-use of the published information, from misuse of the connection or from technical malfunctions are excluded.<br/><br/>All offers are non-binding. The author expressly reserves the right to change, add to, or delete parts of the pages or the entire offer without prior notice, or to temporarily or permanently cease publication.<br/><br/><strong>Disclaimer for content and links</strong><br/>References and links to third party websites are outside our area of responsibility. It rejected any responsibility for such websites. Access to and use of such websites is at the user's own risk.<br/><br/><strong>Copyright declaration</strong><br/>The copyrights and all other rights to content, images, photos or other files on this website belong exclusively to Colin Käser or the specifically named rights holders. The written consent of the copyright holder must be obtained in advance for the reproduction of any elements.</p>
-    <footer class="flex">
-    <i class="fa-solid fa-copyright"></i>
-    <a href="impressum.php">Impressum</a>
-        <div class="socialIcons ">
-            <a href="" class="p-2"><i class="fa-brands fa-youtube"></i></a>
-            <a href="" class="p-2"><i class="fa-brands fa-twitter"></i></a>
-            <a href="" class="p-2"><i class="fa-brands fa-twitch"></i></a>
-            <a href="" class="p-2"><i class="fa-brands fa-instagram"></i></a>
-        </div>
-
-        <a href="register.php" class="">REGISTER</a>
-    </footer>
+    <div id= "content">
+        <p>Colin Kaeser<br/>Im Obstgarten 5<br/>4105 Biel-Benken<br/>Schweiz<br/><strong>Email</strong>: info@binary-gaming.ch<br/><br/><strong>Disclaimer</strong><br/>The author assumes no liability for the correctness, accuracy, timeliness, reliability and completeness of the information.<br/>Liability claims against the author for material or immaterial damage resulting from access to, use or non-use of the published information, from misuse of the connection or from technical malfunctions are excluded.<br/><br/>All offers are non-binding. The author expressly reserves the right to change, add to, or delete parts of the pages or the entire offer without prior notice, or to temporarily or permanently cease publication.<br/><br/><strong>Disclaimer for content and links</strong><br/>References and links to third party websites are outside our area of responsibility. It rejected any responsibility for such websites. Access to and use of such websites is at the user's own risk.<br/><br/><strong>Copyright declaration</strong><br/>The copyrights and all other rights to content, images, photos or other files on this website belong exclusively to Colin Käser or the specifically named rights holders. The written consent of the copyright holder must be obtained in advance for the reproduction of any elements.</p>
+    </div>
+  
 </body>
 </html>
+<?php
+include_once('footer.php');
+?>
