@@ -20,13 +20,7 @@ session_start();
 </head>
 <body class="preloader-site">
     <?php
-        if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout']))
-        {
-            session_destroy();
-            echo '<script type="text/javascript">',
-                    'alert("Logged Out");',
-                 '</script>';
-        }
+
     ?>
     <script>
         $(window).on('load', function() {
@@ -294,6 +288,14 @@ session_start();
                             <li>XL</li>
                         </ul>
                     </div>
+                    <p class="sternebewertung w-full">
+                        <input type="radio" id="stern5" name="bewertung" value="5"><label for="stern5" title="5 Sterne"></i>5 Sterne</label>
+                        <input type="radio" id="stern4" name="bewertung" value="4"><label for="stern4" title="4 Sterne"></i>4 Sterne</label>
+                        <input type="radio" id="stern3" name="bewertung" value="3"><label for="stern3" title="3 Sterne"></i>3 Sterne</label>
+                        <input type="radio" id="stern2" name="bewertung" value="2"><label for="stern2" title="2 Sterne"></i>2 Sterne</label>
+                        <input type="radio" id="stern1" name="bewertung" value="1"><label for="stern1" title="1 Stern"></i>1 Stern</label>
+                        <span id="Bewertung" title="Keine Bewertung"></span>
+                    </p>
                     <div class="addCart"><button type="submit">Send to Cart</button></div>
                 </div>
                 <div class="product">
@@ -310,6 +312,14 @@ session_start();
                             <li>XL</li>
                         </ul>
                     </div>
+                    <p class="sternebewertung w-full">
+                        <input type="radio" id="stern5" name="bewertung" value="5"><label for="stern5" title="5 Sterne">5 Sterne</label>
+                        <input type="radio" id="stern4" name="bewertung" value="4"><label for="stern4" title="4 Sterne">4 Sterne</label>
+                        <input type="radio" id="stern3" name="bewertung" value="3"><label for="stern3" title="3 Sterne">3 Sterne</label>
+                        <input type="radio" id="stern2" name="bewertung" value="2"><label for="stern2" title="2 Sterne">2 Sterne</label>
+                        <input type="radio" id="stern1" name="bewertung" value="1"><label for="stern1" title="1 Stern">1 Stern</label>
+                        <span id="Bewertung" title="Keine Bewertung"></span>
+                    </p>
                     <div class="addCart"><button type="submit">Send to Cart</button></div>
                 </div>
                 <div class="product">
@@ -326,6 +336,14 @@ session_start();
                             <li>XL</li>
                         </ul>
                     </div>
+                    <p class="sternebewertung w-full">
+                        <input type="radio" id="stern5" name="bewertung" value="5"><label for="stern5" title="5 Sterne">5 Sterne</label>
+                        <input type="radio" id="stern4" name="bewertung" value="4"><label for="stern4" title="4 Sterne">4 Sterne</label>
+                        <input type="radio" id="stern3" name="bewertung" value="3"><label for="stern3" title="3 Sterne">3 Sterne</label>
+                        <input type="radio" id="stern2" name="bewertung" value="2"><label for="stern2" title="2 Sterne">2 Sterne</label>
+                        <input type="radio" id="stern1" name="bewertung" value="1"><label for="stern1" title="1 Stern">1 Stern</label>
+                        <span id="Bewertung" title="Keine Bewertung"></span>
+                    </p>
                     <div class="addCart"><button type="submit">Send to Cart</button></div>
                 </div>
                 <div class="product">
@@ -342,6 +360,14 @@ session_start();
                             <li>XL</li>
                         </ul>
                     </div>
+                    <p class="sternebewertung w-full">
+                        <input type="radio" id="stern5" name="bewertung" value="5"><label for="stern5" title="5 Sterne">5 Sterne</label>
+                        <input type="radio" id="stern4" name="bewertung" value="4"><label for="stern4" title="4 Sterne">4 Sterne</label>
+                        <input type="radio" id="stern3" name="bewertung" value="3"><label for="stern3" title="3 Sterne">3 Sterne</label>
+                        <input type="radio" id="stern2" name="bewertung" value="2"><label for="stern2" title="2 Sterne">2 Sterne</label>
+                        <input type="radio" id="stern1" name="bewertung" value="1"><label for="stern1" title="1 Stern">1 Stern</label>
+                        <span id="Bewertung" title="Keine Bewertung"></span>
+                    </p>
                     <div class="addCart"><button type="submit">Send to Cart</button></div>
                 </div>
             </div>
