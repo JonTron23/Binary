@@ -1,6 +1,6 @@
-
 <?php
 include('db-connector.inc.php');
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +19,15 @@ include('db-connector.inc.php');
     <title>Document</title>
 </head>
 <body class="preloader-site">
+    <?php
+        if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout']))
+        {
+            session_destroy();
+            echo '<script type="text/javascript">',
+                    'alert("Logged Out");',
+                 '</script>';
+        }
+    ?>
     <script>
         $(window).on('load', function() {
             $('.preloader_wrapper').delay(2000).fadeOut(1000);
@@ -42,11 +51,16 @@ include('db-connector.inc.php');
                 <li><a href="#home">Media</a></li>
                 <li><a href="#home">Partner</a></li>
                 <li><a href="#home">Q&A</a></li>
-                <li class="cursor-pointer" id="myBtn"><i class="fa-solid fa-arrow-right-to-bracket"></i></li>
+                <li class="cursor-pointer" id="myBtn">
+                    <?php if( !isset($_SESSION['loggedIn'])): ?>
+                        <i class='fa-solid fa-arrow-right-to-bracket'></i>
+                    <?php else: ?>
+                        <i class='fa-solid fa-user'></i>
+                    <?php endif; ?>
+                </li>
             </ul>
         </nav>
     </header>
-    <a href="account.php"><i class="fa-solid fa-user"></i></a>
     <main>
 
     <!-- The Modal -->
@@ -54,24 +68,31 @@ include('db-connector.inc.php');
 
     <!-- Modal content -->
     <div class="modal-content bg-black flex">
+    <?php if( !isset($_SESSION['loggedIn'])): ?>
         <form class="flex flex-col w-1/2 justify-center pl-6" action="login.php" method="post">
-        
-        <div class="login_input_box flex flex-col mb-8">
-            <input class="login_input z-10" type="email" name="email" required>
-            <label class="login_label pb-2 z-0" for="email">E-Mail</label>
+            <div class="login_input_box flex flex-col mb-8">
+                <input class="login_input z-10" type="email" name="email" required>
+                <label class="login_label pb-2 z-0" for="email">E-Mail</label>
+            </div>
+            <div class="login_input_box flex flex-col mb-4">
+                <input class="login_input z-10" type="password" name="password" required>
+                <label class="login_label pb-2 z-0" for="password">Password</label>
+            </div>
+                <input type="submit" value="Submit" id="submit">
+                <div class="flex justify-between">
+                    <a href="change_pw.php">Change Password</a>
+                    <a id="" href="register.php">Sign Up</a>
+                </div>
+        </form>                        
+    <?php else: ?>
+        <div class="buttons flex flex-col w-1/2 justify-center">
+            <a href="account.php">My Account</a>
+            <form action="" method="post">
+                <input type="submit" name="logout" value="Log Out" />
+            </form>
         </div>
-        <div class="login_input_box flex flex-col mb-4">
-            <input class="login_input z-10" type="password" name="password" required>
-            <label class="login_label pb-2 z-0" for="password">Password</label>
-        </div>
-        <input type="submit" value="Submit" id="submit">
-        <div class="flex justify-between">
-            <a href="change_pw.php">Change Password</a>
-            <a id="" href="register.php">Sign Up</a>
-        </div>
-            
+    <?php endif; ?>
 
-        </form>
         <div class="login_logo w-1/2 h-80 flex justify-center items-center">
             <img class="logo w-60" src="files/media/Logo_Design/Logo_Design_White.png" alt="logo">
         </div>
@@ -186,32 +207,37 @@ include('db-connector.inc.php');
         </section>
 
         <section id="news" class="flex flex-col justify-around">
+            <h1 class="title">News</h1>
             <div class="news_slider"> 
-            <div class="news_element">
-                <div class="news_text">
-                    <h1 class="news_title">Test</h1>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. 
-                    </p>
+                <div class="news_element">
+                    <p class="news_time"><i class="fa-solid fa-clock"></i> 23.05.2022</p>
+                    <img class="news_img" src="files/media/mountain.jpg" alt="">
+                    <div class="news_text">
+                        <h1 class="news_title">Test</h1>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. 
+                        </p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="news_element" class="">
-                <div class="news_text">
-                    <h1 class="news_title">Test</h1>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. 
-                    </p>
+                <div class="news_element" class="">
+                    <p class="news_time"><i class="fa-solid fa-clock"></i> 23.05.2022</p>
+                    <img class="news_img" src="files/media/mountain.jpg" alt="">
+                    <div class="news_text">
+                        <h1 class="news_title">Test</h1>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. 
+                        </p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="news_element" class="">
-                <div class="news_text">
-                    <h1 class="news_title">Test</h1>
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. 
-                    </p>
+                <div class="news_element" class="">
+                    <p class="news_time"><i class="fa-solid fa-clock"></i> 23.05.2022</p>
+                    <img class="news_img" src="files/media/mountain.jpg" alt="">
+                    <div class="news_text">
+                        <h1 class="news_title">Test</h1>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. 
+                        </p>
+                    </div>
                 </div>
-            </div>
-
-
             </div>
 
         </section>
@@ -250,7 +276,7 @@ include('db-connector.inc.php');
         </section>
 
         <section id="partner">
-            <h1>COMMING SOON!</h1>
+            <h1 clas="text-9xl p-12">Partners Comming Soon!</h1>
         </section>
         <section id="shop">
             <div class="shopslider flex">
@@ -439,8 +465,6 @@ include('db-connector.inc.php');
             <a href="" class="p-2"><i class="fa-brands fa-twitch"></i></a>
             <a href="" class="p-2"><i class="fa-brands fa-instagram"></i></a>
         </div>
-
-        <a href="register.php" class="">REGISTER</a>
     </footer>
     <script>
         // Get the modal
@@ -505,70 +529,5 @@ include('db-connector.inc.php');
         window.addEventListener("resize", callbackFunc);
         window.addEventListener("scroll", callbackFunc);
     </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>
