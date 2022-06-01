@@ -26,6 +26,7 @@ session_start();
             echo '<script type="text/javascript">',
                     'alert("Logged Out");',
                  '</script>';
+            header("Refresh:0");
         }
     ?>
     <script>

@@ -16,7 +16,7 @@ session_start();
 <body class="flex flex-col justify-center items-center h-screen">
     <?php
         // SQL-Statement erstellen 
-        $insert = "Insert into users (firstname, lastname, email, password) values (?,?,?,?)";
+        $insert = "Insert into user (firstname, lastname, email, password) values (?,?,?,?)";
 
         // SQL-Statement vorbereiten
         $stmt = $mysqli->prepare($insert);
@@ -60,18 +60,37 @@ session_start();
         }
 
     ?>
-
+    <header>
+        <nav>
+            <ul class="grid grid-cols-8 px-4">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#home">About</a></li>
+                <li><a href="#home">Games</a></li>
+                <li><a href="#home">News</a></li>
+                <li><a href="#home">Media</a></li>
+                <li><a href="#home">Partner</a></li>
+                <li><a href="#home">Q&A</a></li>
+                <li class="cursor-pointer" id="myBtn">
+                    <?php if( !isset($_SESSION['loggedIn'])): ?>
+                        <i class='fa-solid fa-arrow-right-to-bracket'></i>
+                    <?php else: ?>
+                        <i class='fa-solid fa-user'></i>
+                    <?php endif; ?>
+                </li>
+            </ul>
+        </nav>
+    </header>
     <form class="flex flex-col w-1/2" action="" method="post">
         <div class="register_input_box">
-            <input class="register_input" type="text" id="firstname" name="firstname" value="<?php echo $firstname ?>" required>
+            <input class="register_input" type="text" id="firstname" name="firstname" value="<?php echo htmlspecialchars($firstname) ?>" required>
             <label class="register_label" for="firstname">Firstname</label>
         </div>
         <div class="register_input_box">
-            <input class="register_input" type="text" id="lastname" name="lastname"  value="<?php echo $lastname ?>" required>
+            <input class="register_input" type="text" id="lastname" name="lastname"  value="<?php echo htmlspecialchars($lastname) ?>" required>
             <label class="register_label" for="lastname">Lastname</label>
         </div>
         <div class="register_input_box">
-            <input class="register_input" type="email" id="email" name="email" pattern="([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,}$" value="<?php echo $email ?>" required>
+            <input class="register_input" type="email" id="email" name="email" pattern="([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,}$" value="<?php echo htmlspecialchars($email) ?>" required>
             <label class="register_label" for="email">E-Mail-Address</label>
         </div>
        <div class="register_input_box">
