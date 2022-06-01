@@ -23,6 +23,10 @@ p{
     color: white;
     font-family: Furore;
 }
+button{
+    color: white !important;
+    font-family: Furore;
+}
 i{
     color: white;
     font-family: Furore;
@@ -506,6 +510,35 @@ body.preloader-site {
     transform: translate(-50%, -50%);
     width: 120px;
 }
+
+.shopslider {
+
+}
+.product {
+  width: 15%;
+  margin: 5%;
+}
+.sizes ul {
+  display: flex;
+  justify-content: space-evenly;
+}
+.sizes li {
+  border: 1px solid #838282;
+  border-radius: 50%;
+  padding: 0.5rem;
+  width: 43px;
+  height: 43px;
+  text-align: center;
+}
+.addCart {
+  display: flex;
+  justify-content: end;
+  padding: 1rem;
+}
+.addCart button {
+  padding: 1rem;
+  border: 1px solid red;
+=======
 #partner {
   padding: 5rem;
 }

@@ -278,6 +278,74 @@ session_start();
         <section id="partner">
             <h1 clas="text-9xl p-12">Partners Comming Soon!</h1>
         </section>
+        <section id="shop">
+            <div class="shopslider flex">
+                <div class="product">
+                    <h3>Binary Tee</h3>
+                    <img src="files/media/shirt.png" alt="Tee">
+                    <div class="description">
+                        <p>asdfjl akldjflak lölk öö lkdj aölkdjfö aölölkj sdfjaskdjfaj löakjklfasdf</p>
+                    </div>
+                    <div class="sizes">
+                        <ul>
+                            <li>S</li>
+                            <li>M</li>
+                            <li>L</li>
+                            <li>XL</li>
+                        </ul>
+                    </div>
+                    <div class="addCart"><button type="submit">Send to Cart</button></div>
+                </div>
+                <div class="product">
+                    <h3>Binary Tee</h3>
+                    <img src="files/media/shirt.png" alt="Tee">
+                    <div class="description">
+                        <p>asdfjl akldjflak lölk öö lkdj aölkdjfö aölölkj sdfjaskdjfaj löakjklfasdf</p>
+                    </div>
+                    <div class="sizes">
+                        <ul>
+                            <li>S</li>
+                            <li>M</li>
+                            <li>L</li>
+                            <li>XL</li>
+                        </ul>
+                    </div>
+                    <div class="addCart"><button type="submit">Send to Cart</button></div>
+                </div>
+                <div class="product">
+                    <h3>Binary Tee</h3>
+                    <img src="files/media/shirt.png" alt="Tee">
+                    <div class="description">
+                        <p>asdfjl akldjflak lölk öö lkdj aölkdjfö aölölkj sdfjaskdjfaj löakjklfasdf</p>
+                    </div>
+                    <div class="sizes">
+                        <ul>
+                            <li>S</li>
+                            <li>M</li>
+                            <li>L</li>
+                            <li>XL</li>
+                        </ul>
+                    </div>
+                    <div class="addCart"><button type="submit">Send to Cart</button></div>
+                </div>
+                <div class="product">
+                    <h3>Binary Tee</h3>
+                    <img src="files/media/shirt.png" alt="Tee">
+                    <div class="description">
+                        <p>asdfjl akldjflak lölk öö lkdj aölkdjfö aölölkj sdfjaskdjfaj löakjklfasdf</p>
+                    </div>
+                    <div class="sizes">
+                        <ul>
+                            <li>S</li>
+                            <li>M</li>
+                            <li>L</li>
+                            <li>XL</li>
+                        </ul>
+                    </div>
+                    <div class="addCart"><button type="submit">Send to Cart</button></div>
+                </div>
+            </div>
+        </section>
         <section id="qa" class="flex justify-center">
             <ul id="faq_list" class="w-5/12 flex flex-col items-center">
                 <li class="faq_element">

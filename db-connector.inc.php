@@ -2,7 +2,7 @@
 // Variabeln deklarieren
 $host = 'localhost'; // host
 $username = 'root'; // username
-$password = ''; // password
+$password = 'root'; // password
 $database = 'binary'; // database
 
 
