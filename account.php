@@ -145,6 +145,7 @@ session_start();
         </div>
         <input type="submit" value="Submit" id="submit">
     </form>
+    <a href="change_pw.php">Change Password</a>
     <footer class="flex">
     <i class="fa-solid fa-copyright"></i>
     <a href="impressum.php">Impressum</a>
