@@ -61,30 +61,6 @@ session_start();
                 }
             }
         }
-        $update = 'UPDATE user SET password = ? where uid = ?';
-        if($_SERVER['REQUEST_METHOD'] == "POST") {
-            if(isset($current_password, $new_password, $repeat_password)){
-                if(!preg_match("/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/", $current_password)){
-                    $error_password = "Current Password does not match requirements";
-                    echo $error_password;
-                }
-                if(!preg_match("/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/", $new_password)){
-                    $error_password = "New Password does not match requirements";
-                    echo $error_password;
-                }
-                if($new_password === $repeat_password){
-                        $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);
-                        // Daten an das SQL-Statement binden
-                        if (!$stmt->bind_param('si', $hashed_password, $uid)) {
-                        $error .= 'bind_param() failed ' . $mysqli->error . '<br />';
-                    }
-                        // SQL-Statement ausführen
-                        if (!$stmt->execute()) {
-                        $error .= 'execute() failed ' . $mysqli->error . '<br />';
-                    }
-                }
-            }
-        }
     ?>
     <header>
         <nav>
@@ -169,21 +145,7 @@ session_start();
         </div>
         <input type="submit" value="Submit" id="submit">
     </form>
-    <form action="" method="post">
-        <div class="register_input_box">
-            <input class="register_input" type="password" id="current_password" name="current_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
-            <label class="register_label" for="current_password">Current Password</label>
-        </div>
-        <div class="register_input_box">
-            <input class="register_input" type="password" id="new_password" name="new_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
-            <label class="register_label" for="new_password">New Password</label>
-        </div>
-        <div class="register_input_box">
-            <input class="register_input" type="password" id="repeat_password" name="repeat_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
-            <label class="register_label" for="repeat_password">Repeat Password</label>
-        </div>
-            <input type="submit" value="Submit" id="submit">
-    </form>
+    <a href="change_pw.php">Change Password</a>
     <footer class="flex">
     <i class="fa-solid fa-copyright"></i>
     <a href="impressum.php">Impressum</a>
