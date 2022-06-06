@@ -81,10 +81,10 @@ session_start();
             </div>
                 <input type="submit" value="Submit" id="submit">
                 <div class="flex justify-between">
-                    <a href="change_pw.php">Change Password</a>
+                    <a href="forget-password.php">Forgot Password</a>
                     <a id="" href="register.php">Sign Up</a>
                 </div>
-        </form>                        
+        </form>                       
     <?php else: ?>
         <div class="buttons flex flex-col w-1/2 justify-center">
             <a href="account.php">My Account</a>
