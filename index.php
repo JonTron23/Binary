@@ -457,10 +457,12 @@ session_start();
 
         </section>
     </main>
-    <footer class="flex">
-    <i class="fa-solid fa-copyright"></i>
-    <a href="impressum.php">Impressum</a>
-        <div class="socialIcons ">
+    <footer class="flex justify-between p-4">
+        <div class="impressum">
+            <i class="fa-solid fa-copyright"></i>
+            <a href="impressum.php">Impressum</a>
+        </div>
+        <div class="socialIcons">
             <a href="" class="p-2"><i class="fa-brands fa-youtube"></i></a>
             <a href="" class="p-2"><i class="fa-brands fa-twitter"></i></a>
             <a href="" class="p-2"><i class="fa-brands fa-twitch"></i></a>
