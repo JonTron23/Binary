@@ -20,13 +20,9 @@ session_start();
 </head>
 <body class="preloader-site">
     <?php
-        $delete = 'DELETE FROM cart WHERE cid = ?';
-        $dstmt = $mysqli->prepare($delete);
 
         if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout']))
         {
-            $dstmt->bind_param('i', $_SESSION['cartID']);
-            $dstmt->execute();
             session_destroy();
             echo '<script type="text/javascript">',
                     'alert("Logged Out");',
