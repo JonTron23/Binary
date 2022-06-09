@@ -18,25 +18,50 @@ session_start();
     $error = '';
     $email = '';
     $password = '';
-    $query = 'select email, password from user where email = ?';
+    $uid = 0;
+
+
+    $cart = 'INSERT INTO cart (uid) values (?)';
+    $insert = $mysqli->prepare($cart);
+
+    $query = 'select email, uid, password from user where email = ?';
     $stmt = $mysqli->prepare($query);
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         $email=trim($_POST["email"]);
         $password=trim($_POST["password"]);
 
+        $cart_query = 'SELECT * FROM cart WHERE uid = ?';
+        $cart_stmt = $mysqli->prepare($cart_query);
+
         if(isset($email, $password)){
             $stmt->bind_param('s', $email);
             $stmt->execute();
             $result=$stmt->get_result();
 
+
+
+            
             while($row = $result->fetch_assoc()){
                 if(password_verify($password, $row['password'])){
                     echo "email: " . $row['email'] . ", password : " . $row['password'] . "<br />";
+                    $uid=$row['uid'];
+
+                    $insert->bind_param('i', $row['uid']);
+                    $insert->execute();
+
+                    $cart_stmt->bind_param('i', $row['uid']);
+                    $cart_stmt->execute();
+                    $cart_result=$cart_stmt->get_result();
+                    while($cart_row = $cart_result->fetch_assoc()){
+                        $_SESSION['cartID'] = $cart_row['cid'];
+                    }
+
                     $_SESSION["email"] = $email;
                     $_SESSION["loggedIn"] = true;
-                } else {
-                    echo('wrong password');
+
+
+
                 }
             }    
             $result->free();    
@@ -45,7 +70,7 @@ session_start();
     ?>
         <header>
         <nav>
-            <ul class="grid grid-cols-8 px-4">
+            <ul class="flex justify-around px-4">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#home">About</a></li>
                 <li><a href="#home">Games</a></li>
