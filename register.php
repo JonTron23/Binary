@@ -19,6 +19,12 @@ session_start();
         $insert = "Insert into user (firstname, lastname, email, password) values (?,?,?,?)";
         $query = 'SELECT * FROM user WHERE email = ?';
 
+        $cart = 'INSERT INTO cart (uid) values (?)';
+        $cart_insert = $mysqli->prepare($cart);
+
+
+        $uid_query = 'select email, uid, password from user where email = ?';
+        $uid_stmt = $mysqli->prepare($uid_query);
         // SQL-Statement vorbereiten
         $stmt = $mysqli->prepare($insert);
         if ($stmt === false) {
@@ -59,6 +65,7 @@ session_start();
                           }
                     }
                     if (count($errors) == 0){
+
                         $hashed_password = password_hash($password, PASSWORD_BCRYPT);
                         // Daten an das SQL-Statement binden
                         if (!$stmt->bind_param('ssss', $firstname, $lastname, $email, $hashed_password)) {
@@ -68,6 +75,18 @@ session_start();
                         if (!$stmt->execute()) {
                             $error .= 'execute() failed ' . $mysqli->error . '<br />';
                         }
+
+                       
+                        $uid_stmt->bind_param('s', $email);
+                        $uid_stmt->execute();
+                        $uid_result=$uid_stmt->get_result();
+                        
+                        while($row = $uid_result->fetch_assoc()){
+                            $cart_insert->bind_param('i', $row['uid']);
+                            $cart_insert->execute();
+                        }
+
+                        
                     } else {
                         print_r($errors);
                     }

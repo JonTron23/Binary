@@ -18,11 +18,7 @@ session_start();
     $error = '';
     $email = '';
     $password = '';
-    $uid = 0;
 
-
-    $cart = 'INSERT INTO cart (uid) values (?)';
-    $insert = $mysqli->prepare($cart);
 
     $query = 'select email, uid, password from user where email = ?';
     $stmt = $mysqli->prepare($query);
@@ -45,10 +41,6 @@ session_start();
             while($row = $result->fetch_assoc()){
                 if(password_verify($password, $row['password'])){
                     echo "email: " . $row['email'] . ", password : " . $row['password'] . "<br />";
-                    $uid=$row['uid'];
-
-                    $insert->bind_param('i', $row['uid']);
-                    $insert->execute();
 
                     $cart_stmt->bind_param('i', $row['uid']);
                     $cart_stmt->execute();
@@ -59,6 +51,7 @@ session_start();
 
                     $_SESSION["email"] = $email;
                     $_SESSION["loggedIn"] = true;
+                    echo($_SESSION['cartID']);
 
 
 
