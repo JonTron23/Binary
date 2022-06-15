@@ -20,6 +20,8 @@ session_start();
 </head>
 <body class="preloader-site">
     <?php
+        $query = 'select * from product where ?;';
+        $stmt = $mysqli->prepare($query);
 
         if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout']))
         {
@@ -310,70 +312,38 @@ session_start();
         </section>
         <section id="shop">
             <div class="shopslider flex">
-                <div class="product">
-                    <h3>Binary Tee</h3>
-                    <img src="files/media/shirt.png" alt="Tee">
-                    <div class="description">
-                        <p>asdfjl akldjflak lölk öö lkdj aölkdjfö aölölkj sdfjaskdjfaj löakjklfasdf</p>
-                    </div>
-                    <div class="sizes">
-                        <ul>
-                            <li>S</li>
-                            <li>M</li>
-                            <li>L</li>
-                            <li>XL</li>
-                        </ul>
-                    </div>
-                    <div class="addCart"><button type="submit">Send to Cart</button></div>
-                </div>
-                <div class="product">
-                    <h3>Binary Tee</h3>
-                    <img src="files/media/shirt.png" alt="Tee">
-                    <div class="description">
-                        <p>asdfjl akldjflak lölk öö lkdj aölkdjfö aölölkj sdfjaskdjfaj löakjklfasdf</p>
-                    </div>
-                    <div class="sizes">
-                        <ul>
-                            <li>S</li>
-                            <li>M</li>
-                            <li>L</li>
-                            <li>XL</li>
-                        </ul>
-                    </div>
-                    <div class="addCart"><button type="submit">Send to Cart</button></div>
-                </div>
-                <div class="product">
-                    <h3>Binary Tee</h3>
-                    <img src="files/media/shirt.png" alt="Tee">
-                    <div class="description">
-                        <p>asdfjl akldjflak lölk öö lkdj aölkdjfö aölölkj sdfjaskdjfaj löakjklfasdf</p>
-                    </div>
-                    <div class="sizes">
-                        <ul>
-                            <li>S</li>
-                            <li>M</li>
-                            <li>L</li>
-                            <li>XL</li>
-                        </ul>
-                    </div>
-                    <div class="addCart"><button type="submit">Send to Cart</button></div>
-                </div>
-                <div class="product">
-                    <h3>Binary Tee</h3>
-                    <img src="files/media/shirt.png" alt="Tee">
-                    <div class="description">
-                        <p>asdfjl akldjflak lölk öö lkdj aölkdjfö aölölkj sdfjaskdjfaj löakjklfasdf</p>
-                    </div>
-                    <div class="sizes">
-                        <ul>
-                            <li>S</li>
-                            <li>M</li>
-                            <li>L</li>
-                            <li>XL</li>
-                        </ul>
-                    </div>
-                    <div class="addCart"><button type="submit">Send to Cart</button></div>
-                </div>
+                <?php
+                    //$add = 'INSERT INTO cart_item (cid, psku, pid, qty) values (?,?,?,?)';
+                    //$add_stmt->prepare($add);
+
+                    $one = 1;
+                    $stmt->bind_param('i', $one);
+                    $stmt->execute();
+                    $result=$stmt->get_result();
+                    while($row = $result->fetch_assoc()){
+                        echo (
+                            '
+                            <div class="product">
+                                <h3>' . $row['name'] . '</h3>
+                                <img src="' . $row['img'] . '" alt="Tee">
+                            <div class="description">
+                                <p>' . $row['description'] . '</p>
+                            </div>
+                            <div class="sizes">
+                                <ul>
+                                    <li>S</li>
+                                    <li>M</li>
+                                    <li>L</li>
+                                    <li>XL</li>
+                                </ul>
+                            </div>
+                            <div class="addCart"><button type="submit" id="' . $row['pid'] . '">Send to Cart</button></div>
+                            </div>
+                            '
+                        );
+                    }    
+                    $result->free();  
+                ?>
             </div>
         </section>
         <section id="qa" class="flex justify-center">
@@ -574,6 +544,13 @@ session_start();
         window.addEventListener("load", callbackFunc);
         window.addEventListener("resize", callbackFunc);
         window.addEventListener("scroll", callbackFunc);
+
+
+       // $stmt->bind_param('i', $one);
+
+        $( ".addCart" ).click(function() {
+            console.log($('.addCart').attr());
+        });
     </script>
 </body>
 </html>
