@@ -22,8 +22,6 @@ session_start();
     <?php
         $query = 'select * from product where ?;';
         $stmt = $mysqli->prepare($query);
-  
-
 
         if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout']))
         {
@@ -31,6 +29,7 @@ session_start();
             echo '<script type="text/javascript">',
                     'alert("Logged Out");',
                  '</script>';
+            header("Refresh:0");
         }
     ?>
     <script>
@@ -48,7 +47,7 @@ session_start();
 
     <header>
         <nav>
-            <ul class="grid grid-cols-8 px-4">
+            <ul class="flex justify-around px-4">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#home">About</a></li>
                 <li><a href="#home">Games</a></li>
@@ -63,6 +62,11 @@ session_start();
                         <i class='fa-solid fa-user'></i>
                     <?php endif; ?>
                 </li>
+                <?php if( isset($_SESSION['loggedIn'])): ?>
+                    <li class="cursor-pointer" id="cartBtn">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </li>
+                <?php endif; ?>
             </ul>
         </nav>
     </header>
@@ -105,6 +109,29 @@ session_start();
     </div>
 
     </div>
+
+
+
+
+        <!-- The Modal -->
+        <div id="cartModal" class="modal">
+
+        <?php 
+            $cartquery = "SELECT * FROM "
+
+        ?>
+            <!-- Modal content -->
+            <div class="modal-content bg-black flex">
+                <ul class="cartItems">
+                    <li class="item"></li>
+                    <li class="item"></li>
+                    <li class="item"></li>
+                    <li class="item"></li>
+                    <li class="item"></li>
+                </ul>
+                <span class="h-1/2 cartClose">&times;</span>
+            </div>
+        </div>
 
 
         <section id="welcome">
@@ -429,10 +456,12 @@ session_start();
 
         </section>
     </main>
-    <footer class="flex">
-    <i class="fa-solid fa-copyright"></i>
-    <a href="impressum.php">Impressum</a>
-        <div class="socialIcons ">
+    <footer class="flex justify-between p-4">
+        <div class="impressum">
+            <i class="fa-solid fa-copyright"></i>
+            <a href="impressum.php">Impressum</a>
+        </div>
+        <div class="socialIcons">
             <a href="" class="p-2"><i class="fa-brands fa-youtube"></i></a>
             <a href="" class="p-2"><i class="fa-brands fa-twitter"></i></a>
             <a href="" class="p-2"><i class="fa-brands fa-twitch"></i></a>
@@ -442,21 +471,30 @@ session_start();
     <script>
         // Get the modal
         var modal = document.getElementById("myModal");
+        var cart_modal = document.getElementById("cartModal");
 
         // Get the button that opens the modal
         var btn = document.getElementById("myBtn");
+        var cart_btn = document.getElementById("cartBtn");
 
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
+        var cart_span = document.getElementsByClassName("cartClose")[0];
 
         // When the user clicks the button, open the modal 
         btn.onclick = function() {
         modal.style.display = "block";
         }
+        cart_btn.onclick = function() {
+            cart_modal.style.display = "block";
+        }
 
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
         modal.style.display = "none";
+        }
+        cart_span.onclick = function() {
+            cart_modal.style.display = "none";
         }
 
         // When the user clicks anywhere outside of the modal, close it
@@ -464,6 +502,11 @@ session_start();
         if (event.target == modal) {
             modal.style.display = "none";
         }
+        }
+        window.onclick = function(event) {
+            if (event.target == cart_modal) {
+                cart_modal.style.display = "none";
+            }
         }
 
 

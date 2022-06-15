@@ -16,14 +16,25 @@ session_start();
 <body class="flex flex-col justify-center items-center h-screen">
     <?php
         // SQL-Statement erstellen 
-        $insert = "Insert into users (firstname, lastname, email, password) values (?,?,?,?)";
+        $insert = "Insert into user (firstname, lastname, email, password) values (?,?,?,?)";
+        $query = 'SELECT * FROM user WHERE email = ?';
 
+        $cart = 'INSERT INTO cart (uid) values (?)';
+        $cart_insert = $mysqli->prepare($cart);
+
+
+        $uid_query = 'select email, uid, password from user where email = ?';
+        $uid_stmt = $mysqli->prepare($uid_query);
         // SQL-Statement vorbereiten
         $stmt = $mysqli->prepare($insert);
         if ($stmt === false) {
             $error .= 'prepare() failed ' . $mysqli->error . '<br />';
         }
-        $error = '';
+        $qstmt = $mysqli->prepare($query);
+        if ($qstmt === false) {
+            $error .= 'prepare() failed ' . $mysqli->eßrror . '<br />';
+        }
+        $errors = array(); 
         $firstname = $lastname = $email = $password = $rpassword = '';
 
         if($_SERVER['REQUEST_METHOD'] == "POST"){
@@ -33,45 +44,87 @@ session_start();
                 $password=trim($_POST["password"]);
                 $rpassword=trim($_POST["rpassword"]);
 
+                $qstmt->bind_param('s', $email);
+                $qstmt->execute();
+                $result=$qstmt->get_result();
+                $user = mysqli_fetch_assoc($result);
+
                 if(isset($email, $password, $rpassword)){
                     if(!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,}$/ix", $email)){
-                        $error_email = "E-Mail does not match requirements";
-                        echo $error_email;
-                    } else {
-                        echo $email;
+                        array_push($errors, "E-Mail does not match requirements");
                     }
                     if(!preg_match("/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/", $password)){
-                        $error_password = "Password does not match requirements";
-                        echo $error_password;
+                        array_push($errors, "Password does not match requirements");
                     }
-                    if($password === $rpassword){
-                            $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-                            // Daten an das SQL-Statement binden
-                            if (!$stmt->bind_param('ssss', $firstname, $lastname, $email, $hashed_password)) {
+                    if($password !== $rpassword){
+                        array_push($errors, "Password does not match with second Password");
+                    }
+                    if($user){
+                        if ($user['email'] === $email) {
+                            array_push($errors, "email already exists");
+                          }
+                    }
+                    if (count($errors) == 0){
+
+                        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+                        // Daten an das SQL-Statement binden
+                        if (!$stmt->bind_param('ssss', $firstname, $lastname, $email, $hashed_password)) {
                             $error .= 'bind_param() failed ' . $mysqli->error . '<br />';
                         }
-
-                            // SQL-Statement ausführen
-                            if (!$stmt->execute()) {
+                        // SQL-Statement ausführen
+                        if (!$stmt->execute()) {
                             $error .= 'execute() failed ' . $mysqli->error . '<br />';
                         }
+
+                       
+                        $uid_stmt->bind_param('s', $email);
+                        $uid_stmt->execute();
+                        $uid_result=$uid_stmt->get_result();
+                        
+                        while($row = $uid_result->fetch_assoc()){
+                            $cart_insert->bind_param('i', $row['uid']);
+                            $cart_insert->execute();
+                        }
+
+                        
+                    } else {
+                        print_r($errors);
                     }
                 }
-        }
+            }
 
     ?>
-
+    <header>
+        <nav>
+            <ul class="grid grid-cols-8 px-4">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#home">About</a></li>
+                <li><a href="#home">Games</a></li>
+                <li><a href="#home">News</a></li>
+                <li><a href="#home">Media</a></li>
+                <li><a href="#home">Partner</a></li>
+                <li><a href="#home">Q&A</a></li>
+                <li class="cursor-pointer" id="myBtn">
+                    <?php if( !isset($_SESSION['loggedIn'])): ?>
+                        <i class='fa-solid fa-arrow-right-to-bracket'></i>
+                    <?php else: ?>
+                        <i class='fa-solid fa-user'></i>
+                    <?php endif; ?>
+                </li>
+            </ul>
+        </nav>
+    </header>
     <form class="flex flex-col w-1/2" action="" method="post">
         <div class="register_input_box">
-            <input class="register_input" type="text" id="firstname" name="firstname" value="<?php echo $firstname ?>" required>
+            <input class="register_input" type="text" id="firstname" name="firstname" value="<?php echo htmlspecialchars($firstname) ?>" required>
             <label class="register_label" for="firstname">Firstname</label>
         </div>
         <div class="register_input_box">
-            <input class="register_input" type="text" id="lastname" name="lastname"  value="<?php echo $lastname ?>" required>
+            <input class="register_input" type="text" id="lastname" name="lastname"  value="<?php echo htmlspecialchars($lastname) ?>" required>
             <label class="register_label" for="lastname">Lastname</label>
         </div>
         <div class="register_input_box">
-            <input class="register_input" type="email" id="email" name="email" pattern="([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,}$" value="<?php echo $email ?>" required>
+            <input class="register_input" type="email" id="email" name="email" pattern="([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,}$" value="<?php echo htmlspecialchars($email) ?>" required>
             <label class="register_label" for="email">E-Mail-Address</label>
         </div>
        <div class="register_input_box">

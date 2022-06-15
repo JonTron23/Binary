@@ -17,7 +17,7 @@ session_start();
 </head>
 <body>
     <?php
-        $query = 'select * from users where email = ?';
+        $query = 'select * from user where email = ?';
         $stmt = $mysqli->prepare($query);
         $stmt->bind_param('s', $_SESSION["email"]);
         $stmt->execute();
@@ -26,19 +26,59 @@ session_start();
             $firstname = $row['firstname'];
             $lastname = $row['lastname'];
             $email = $row['email'];
+            $street = $row['street'];
+            $city = $row['city'];
+            $zip = $row['zip'];
+            $country = $row['country'];
+            $uid = $row['uid'];
+        }
+
+        $error='';
+        $update = "UPDATE user SET firstname = ?, lastname = ?, email = ?, street = ?, city = ?, zip = ?, country = ? WHERE uid = ?";
+        $ustmt = $mysqli->prepare($update);
+        if ($ustmt === false) {
+            $error .= 'prepare() failed ' . $mysqli->error . '<br />';
+        }
+
+        if($_SERVER['REQUEST_METHOD'] == "POST"){
+            if(isset($firstname, $lastname, $email)){
+                if(!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,}$/ix", $email)){
+                    $error_email = "E-Mail does not match requirements";
+                    echo $error_email;
+                }
+                $firstname = $_POST['firstname'];
+                $lastname = $_POST['lastname'];
+                $email = $_POST['email'];
+                $street = $_POST['street'];
+                $city = $_POST['city'];
+                $zip = $_POST['zip'];
+                $country = $_POST['country'];
+                if (!$ustmt->bind_param('sssssisi', $firstname, $lastname, $email, $street, $city, $zip, $country, $uid)) {
+                    $error .= 'bind_param() failed' . $mysqli->error . '<br />';
+                }
+                if (!$ustmt->execute()) {
+                    $error .= 'execute() failed ' . $mysqli->error . '<br />';
+                }
+            }
         }
     ?>
-<header>
+    <header>
         <nav>
             <ul class="grid grid-cols-8 px-4">
-                <li><a href="#home">Home</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="#home">About</a></li>
                 <li><a href="#home">Games</a></li>
                 <li><a href="#home">News</a></li>
                 <li><a href="#home">Media</a></li>
                 <li><a href="#home">Partner</a></li>
                 <li><a href="#home">Q&A</a></li>
-                <li class="cursor-pointer" id="myBtn"><i class="fa-solid fa-arrow-right-to-bracket"></i></li>
+                <li class="cursor-pointer" id="myBtn">
+                    <?php if( !isset($_SESSION['loggedIn'])): ?>
+                        <i class='fa-solid fa-arrow-right-to-bracket'></i>
+                    <?php else: ?>
+                        <i class='fa-solid fa-user'></i>
+                    <?php endif; ?>
+                </li>
             </ul>
         </nav>
     </header>
@@ -46,20 +86,20 @@ session_start();
         <div class="register_input_box">
             <input class="register_input" 
                 type="text" 
-                id="fname" 
-                name="fname" 
-                value="<?php echo $firstname ?>" 
+                id="firstname" 
+                name="firstname" 
+                value="<?php echo htmlspecialchars($firstname) ?>" 
                 required>
-            <label class="register_label" for="fname">Firstname</label>
+            <label class="register_label" for="firstname">Firstname</label>
         </div>
         <div class="register_input_box">
             <input class="register_input" 
                 type="text" 
-                id="lname" 
-                name="lname"  
-                value="<?php echo $lastname ?>" 
+                id="lastname" 
+                name="lastname"  
+                value="<?php echo htmlspecialchars($lastname) ?>" 
                 required>
-            <label class="register_label" for="lname">Lastname</label>
+            <label class="register_label" for="lastname">Lastname</label>
         </div>
         <div class="register_input_box">
             <input class="register_input" 
@@ -67,55 +107,45 @@ session_start();
                 id="email" 
                 name="email" 
                 pattern="([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,}$" 
-                value="<?php echo $email ?>" 
+                value="<?php echo htmlspecialchars($email) ?>" 
                 required>
             <label class="register_label" for="email">E-Mail-Address</label>
         </div>
         <div class="register_input_box">
             <input class="register_input"
                 type="street" 
-                id="autocomplete">
-                <label class="register_label" for="email">Street</label>
+                id="autocomplete"
+                name="street"
+                value="<?php echo htmlspecialchars($street) ?>" >
+                <label class="register_label" for="street">Street</label>
         </div>
         <div class="register_input_box">
             <input class="register_input" 
                     type="city" 
-                    id="inputCity"> 
-                <label class="register_label" for="email">City</label>
+                    id="inputCity"
+                    name="city"
+                    value="<?php echo htmlspecialchars($city) ?>"> 
+                <label class="register_label" for="city">City</label>
         </div>
         <div class="register_input_box">
             <input class="register_input"
                     type="zip" 
-                    id="inputZip">
-                <label class="register_label" for="email">ZIP</label>
+                    id="inputZip"
+                    name="zip"
+                    value="<?php echo $zip ?>">
+                <label class="register_label" for="zip">ZIP</label>
         </div>
         <div class="register_input_box">
             <input class="register_input"
-                    type="county" 
-                    id="inputCounty">
+                    type="country" 
+                    id="inputCounty"
+                    name="country"
+                    value="<?php echo htmlspecialchars($country) ?>">
                 <label class="register_label" for="email">Country</label>
         </div>
-       <div class="register_input_box">
-           <input class="register_input" 
-                type="password" 
-                id="password" 
-                name="password" 
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
-                required>
-           <label class="register_label" for="password">Password</label>
-
-       </div>
-       <div class="register_input_box">
-           <input class="register_input" 
-                type="password" 
-                id="rpassword" 
-                name="rpassword" 
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
-                required>
-           <label class="register_label" for="rpassword">repeat Password</label>
-       </div>
         <input type="submit" value="Submit" id="submit">
     </form>
+    <a href="change_pw.php">Change Password</a>
     <footer class="flex">
     <i class="fa-solid fa-copyright"></i>
     <a href="impressum.php">Impressum</a>
