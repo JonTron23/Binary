@@ -21,6 +21,17 @@ session_start();
 <body class="preloader-site">
     <?php
 
+        $query = 'select * from product where ?;';
+        $stmt = $mysqli->prepare($query);
+
+        if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout']))
+        {
+            session_destroy();
+            echo '<script type="text/javascript">',
+                    'alert("Logged Out");',
+                 '</script>';
+            header("Refresh:0");
+        }
     ?>
     <script>
         $(window).on('load', function() {
@@ -37,7 +48,7 @@ session_start();
 
     <header>
         <nav>
-            <ul class="grid grid-cols-8 px-4">
+            <ul class="flex justify-around px-4">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#home">About</a></li>
                 <li><a href="#home">Games</a></li>
@@ -52,6 +63,11 @@ session_start();
                         <i class='fa-solid fa-user'></i>
                     <?php endif; ?>
                 </li>
+                <?php if( isset($_SESSION['loggedIn'])): ?>
+                    <li class="cursor-pointer" id="cartBtn">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </li>
+                <?php endif; ?>
             </ul>
         </nav>
     </header>
@@ -94,6 +110,29 @@ session_start();
     </div>
 
     </div>
+
+
+
+
+        <!-- The Modal -->
+        <div id="cartModal" class="modal">
+
+        <?php 
+            $cartquery = "SELECT * FROM "
+
+        ?>
+            <!-- Modal content -->
+            <div class="modal-content bg-black flex">
+                <ul class="cartItems">
+                    <li class="item"></li>
+                    <li class="item"></li>
+                    <li class="item"></li>
+                    <li class="item"></li>
+                    <li class="item"></li>
+                </ul>
+                <span class="h-1/2 cartClose">&times;</span>
+            </div>
+        </div>
 
 
         <section id="welcome">
@@ -274,102 +313,38 @@ session_start();
         </section>
         <section id="shop">
             <div class="shopslider flex">
-                <div class="product">
-                    <h3>Binary Tee</h3>
-                    <img src="files/media/shirt.png" alt="Tee">
-                    <div class="description">
-                        <p>asdfjl akldjflak lölk öö lkdj aölkdjfö aölölkj sdfjaskdjfaj löakjklfasdf</p>
-                    </div>
-                    <div class="sizes">
-                        <ul>
-                            <li>S</li>
-                            <li>M</li>
-                            <li>L</li>
-                            <li>XL</li>
-                        </ul>
-                    </div>
-                    <p class="sternebewertung w-full">
-                        <input type="radio" id="stern5" name="bewertung" value="5"><label for="stern5" title="5 Sterne"></i>5 Sterne</label>
-                        <input type="radio" id="stern4" name="bewertung" value="4"><label for="stern4" title="4 Sterne"></i>4 Sterne</label>
-                        <input type="radio" id="stern3" name="bewertung" value="3"><label for="stern3" title="3 Sterne"></i>3 Sterne</label>
-                        <input type="radio" id="stern2" name="bewertung" value="2"><label for="stern2" title="2 Sterne"></i>2 Sterne</label>
-                        <input type="radio" id="stern1" name="bewertung" value="1"><label for="stern1" title="1 Stern"></i>1 Stern</label>
-                        <span id="Bewertung" title="Keine Bewertung"></span>
-                    </p>
-                    <div class="addCart"><button type="submit">Send to Cart</button></div>
-                </div>
-                <div class="product">
-                    <h3>Binary Tee</h3>
-                    <img src="files/media/shirt.png" alt="Tee">
-                    <div class="description">
-                        <p>asdfjl akldjflak lölk öö lkdj aölkdjfö aölölkj sdfjaskdjfaj löakjklfasdf</p>
-                    </div>
-                    <div class="sizes">
-                        <ul>
-                            <li>S</li>
-                            <li>M</li>
-                            <li>L</li>
-                            <li>XL</li>
-                        </ul>
-                    </div>
-                    <p class="sternebewertung w-full">
-                        <input type="radio" id="stern5" name="bewertung" value="5"><label for="stern5" title="5 Sterne">5 Sterne</label>
-                        <input type="radio" id="stern4" name="bewertung" value="4"><label for="stern4" title="4 Sterne">4 Sterne</label>
-                        <input type="radio" id="stern3" name="bewertung" value="3"><label for="stern3" title="3 Sterne">3 Sterne</label>
-                        <input type="radio" id="stern2" name="bewertung" value="2"><label for="stern2" title="2 Sterne">2 Sterne</label>
-                        <input type="radio" id="stern1" name="bewertung" value="1"><label for="stern1" title="1 Stern">1 Stern</label>
-                        <span id="Bewertung" title="Keine Bewertung"></span>
-                    </p>
-                    <div class="addCart"><button type="submit">Send to Cart</button></div>
-                </div>
-                <div class="product">
-                    <h3>Binary Tee</h3>
-                    <img src="files/media/shirt.png" alt="Tee">
-                    <div class="description">
-                        <p>asdfjl akldjflak lölk öö lkdj aölkdjfö aölölkj sdfjaskdjfaj löakjklfasdf</p>
-                    </div>
-                    <div class="sizes">
-                        <ul>
-                            <li>S</li>
-                            <li>M</li>
-                            <li>L</li>
-                            <li>XL</li>
-                        </ul>
-                    </div>
-                    <p class="sternebewertung w-full">
-                        <input type="radio" id="stern5" name="bewertung" value="5"><label for="stern5" title="5 Sterne">5 Sterne</label>
-                        <input type="radio" id="stern4" name="bewertung" value="4"><label for="stern4" title="4 Sterne">4 Sterne</label>
-                        <input type="radio" id="stern3" name="bewertung" value="3"><label for="stern3" title="3 Sterne">3 Sterne</label>
-                        <input type="radio" id="stern2" name="bewertung" value="2"><label for="stern2" title="2 Sterne">2 Sterne</label>
-                        <input type="radio" id="stern1" name="bewertung" value="1"><label for="stern1" title="1 Stern">1 Stern</label>
-                        <span id="Bewertung" title="Keine Bewertung"></span>
-                    </p>
-                    <div class="addCart"><button type="submit">Send to Cart</button></div>
-                </div>
-                <div class="product">
-                    <h3>Binary Tee</h3>
-                    <img src="files/media/shirt.png" alt="Tee">
-                    <div class="description">
-                        <p>asdfjl akldjflak lölk öö lkdj aölkdjfö aölölkj sdfjaskdjfaj löakjklfasdf</p>
-                    </div>
-                    <div class="sizes">
-                        <ul>
-                            <li>S</li>
-                            <li>M</li>
-                            <li>L</li>
-                            <li>XL</li>
-                        </ul>
-                    </div>
-                    <p class="sternebewertung w-full">
-                        <input type="radio" id="stern5" name="bewertung" value="5"><label for="stern5" title="5 Sterne">5 Sterne</label>
-                        <input type="radio" id="stern4" name="bewertung" value="4"><label for="stern4" title="4 Sterne">4 Sterne</label>
-                        <input type="radio" id="stern3" name="bewertung" value="3"><label for="stern3" title="3 Sterne">3 Sterne</label>
-                        <input type="radio" id="stern2" name="bewertung" value="2"><label for="stern2" title="2 Sterne">2 Sterne</label>
-                        <input type="radio" id="stern1" name="bewertung" value="1"><label for="stern1" title="1 Stern">1 Stern</label>
-                        <span id="Bewertung" title="Keine Bewertung"></span>
-                    </p>
-                    <div class="addCart"><button type="submit">Send to Cart</button></div>
-                </div>
+                <?php
+                    //$add = 'INSERT INTO cart_item (cid, psku, pid, qty) values (?,?,?,?)';
+                    //$add_stmt->prepare($add);
+
+                    $one = 1;
+                    $stmt->bind_param('i', $one);
+                    $stmt->execute();
+                    $result=$stmt->get_result();
+                    while($row = $result->fetch_assoc()){
+                        echo (
+                            '
+                            <div class="product">
+                                <h3>' . $row['name'] . '</h3>
+                                <img src="' . $row['img'] . '" alt="Tee">
+                            <div class="description">
+                                <p>' . $row['description'] . '</p>
+                            </div>
+                            <div class="sizes">
+                                <ul>
+                                    <li>S</li>
+                                    <li>M</li>
+                                    <li>L</li>
+                                    <li>XL</li>
+                                </ul>
+                            </div>
+                            <div class="addCart"><button type="submit" id="' . $row['pid'] . '">Send to Cart</button></div>
+                            </div>
+                            '
+                        );
+                    }    
+                    $result->free();  
+                ?>
             </div>
         </section>
         <section id="qa" class="flex justify-center">
@@ -482,10 +457,12 @@ session_start();
 
         </section>
     </main>
-    <footer class="flex">
-    <i class="fa-solid fa-copyright"></i>
-    <a href="impressum.php">Impressum</a>
-        <div class="socialIcons ">
+    <footer class="flex justify-between p-4">
+        <div class="impressum">
+            <i class="fa-solid fa-copyright"></i>
+            <a href="impressum.php">Impressum</a>
+        </div>
+        <div class="socialIcons">
             <a href="" class="p-2"><i class="fa-brands fa-youtube"></i></a>
             <a href="" class="p-2"><i class="fa-brands fa-twitter"></i></a>
             <a href="" class="p-2"><i class="fa-brands fa-twitch"></i></a>
@@ -495,21 +472,30 @@ session_start();
     <script>
         // Get the modal
         var modal = document.getElementById("myModal");
+        var cart_modal = document.getElementById("cartModal");
 
         // Get the button that opens the modal
         var btn = document.getElementById("myBtn");
+        var cart_btn = document.getElementById("cartBtn");
 
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
+        var cart_span = document.getElementsByClassName("cartClose")[0];
 
         // When the user clicks the button, open the modal 
         btn.onclick = function() {
         modal.style.display = "block";
         }
+        cart_btn.onclick = function() {
+            cart_modal.style.display = "block";
+        }
 
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
         modal.style.display = "none";
+        }
+        cart_span.onclick = function() {
+            cart_modal.style.display = "none";
         }
 
         // When the user clicks anywhere outside of the modal, close it
@@ -517,6 +503,11 @@ session_start();
         if (event.target == modal) {
             modal.style.display = "none";
         }
+        }
+        window.onclick = function(event) {
+            if (event.target == cart_modal) {
+                cart_modal.style.display = "none";
+            }
         }
 
 
@@ -554,6 +545,13 @@ session_start();
         window.addEventListener("load", callbackFunc);
         window.addEventListener("resize", callbackFunc);
         window.addEventListener("scroll", callbackFunc);
+
+
+       // $stmt->bind_param('i', $one);
+
+        $( ".addCart" ).click(function() {
+            console.log($('.addCart').attr());
+        });
     </script>
 </body>
 </html>

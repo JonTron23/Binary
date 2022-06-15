@@ -16,6 +16,54 @@ session_start();
     <title>Document</title>
 </head>
 <body>
+    <?php
+        $current_password = $new_password = $repeat_password = '';
+        $error = '';
+            $query = 'select * from user where email = ?';
+            $stmt = $mysqli->prepare($query);
+            $stmt->bind_param('s', $_SESSION["email"]);
+            $stmt->execute();
+            $result=$stmt->get_result();
+            while($row = $result->fetch_assoc()){
+                $db_password = $row['password'];
+                $uid = $row['uid'];
+            }
+        $update = 'UPDATE user SET password = ? where uid = ?';
+        $ustmt = $mysqli->prepare($update);
+        if($_SERVER['REQUEST_METHOD'] == "POST") {
+            if(isset($current_password, $new_password, $repeat_password)){
+                $current_password = $_POST['current_password'];
+                $new_password = $_POST['new_password'];
+                $repeat_password = $_POST['repeat_password'];
+                echo($uid);
+                echo($current_password);
+                echo($new_password);
+                if(!preg_match("/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/", $current_password)){
+                    $error_password = "Current Password does not match requirements";
+                    echo $error_password;
+                }
+                if(!preg_match("/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/", $new_password)){
+                    $error_password = "New Password does not match requirements";
+                    echo $error_password;
+                }
+                if(!password_verify($current_password, $db_password)){
+                    $error_password = "The password does not match your Password";
+                    echo $error_password;
+                }
+                if($new_password === $repeat_password){
+                        $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);
+                        // Daten an das SQL-Statement binden
+                        if (!$ustmt->bind_param('si', $hashed_password, $uid)) {
+                        $error .= 'bind_param() failed ' . $mysqli->error . '<br />';
+                    }
+                        // SQL-Statement ausführen
+                        if (!$ustmt->execute()) {
+                        $error .= 'execute() failed ' . $mysqli->error . '<br />';
+                    }
+                }
+            }
+        }
+    ?>
 <header class="pb-8">
         <nav>
             <ul class="grid grid-cols-8 px-4">
@@ -32,14 +80,21 @@ session_start();
         </nav>
     </header>
     <main class="flex flex-col justify-center items-center">
-    <div class="register_input_box w-1/2">
-           <input class="register_input" type="password" id="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
-           <label class="register_label" for="password">New Password</label>
-    </div>
-    <div class="register_input_box w-1/2">
-        <input class="register_input" type="password" id="rpassword" name="rpassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
-        <label class="register_label" for="rpassword">repeat Password</label>
-    </div>
+    <form action="" method="post">
+        <div class="register_input_box">
+            <input class="register_input" type="password" id="current_password" name="current_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+            <label class="register_label" for="current_password">Current Password</label>
+        </div>
+        <div class="register_input_box">
+            <input class="register_input" type="password" id="new_password" name="new_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+            <label class="register_label" for="new_password">New Password</label>
+        </div>
+        <div class="register_input_box">
+            <input class="register_input" type="password" id="repeat_password" name="repeat_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+            <label class="register_label" for="repeat_password">Repeat Password</label>
+        </div>
+            <input type="submit" value="Submit" id="submit">
+    </form>
     </main>
     
     <footer class="flex">
