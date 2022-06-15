@@ -20,6 +20,7 @@ session_start();
 </head>
 <body class="preloader-site">
     <?php
+
         $query = 'select * from product where ?;';
         $stmt = $mysqli->prepare($query);
 
