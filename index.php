@@ -21,6 +21,9 @@ session_start();
 <body class="preloader-site">
     <?php
 
+        $query = 'select * from product where ?';
+        $stmt = $mysqli->prepare($query);
+
         if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['logout']))
         {
             session_destroy();
