@@ -21,9 +21,7 @@ session_start();
 <body class="preloader-site">
     <?php
 
-<<<<<<< Updated upstream
-=======
-        $query = 'select * from product where ?;';
+        $query = 'select * from product where ?';
         $ratinginsert = 'INSERT INTO rating (pid, rating, stars, user) values(?,?,?,?)';
         $ratingstmt = $mysqli->prepare($ratinginsert);
         $stmt = $mysqli->prepare($query);
@@ -41,7 +39,6 @@ session_start();
         {
             $ratingstmt->bind_param("isis", pid, $_POST['rating'], stars, $_SESSION['firstname'] );
         }
->>>>>>> Stashed changes
     ?>
     <script>
         $(window).on('load', function() {
@@ -117,8 +114,6 @@ session_start();
     </div>
 
 
-<<<<<<< Updated upstream
-=======
         <!-- The Modal -->
         <div id="ratingModal" class="modal">
 
@@ -167,9 +162,6 @@ session_start();
                 <span class="h-1/2 cartClose">&times;</span>
             </div>
         </div>
-
-
->>>>>>> Stashed changes
         <section id="welcome">
             <h1 class="title">Welcome to Binary Gaming</h1>
             <img class="logo" src="files/media/Logo_Design/Logo_Design_White.png" alt="logo">
@@ -348,104 +340,6 @@ session_start();
         </section>
         <section id="shop">
             <div class="shopslider flex">
-<<<<<<< Updated upstream
-                <div class="product">
-                    <h3>Binary Tee</h3>
-                    <img src="files/media/shirt.png" alt="Tee">
-                    <div class="description">
-                        <p>asdfjl akldjflak lölk öö lkdj aölkdjfö aölölkj sdfjaskdjfaj löakjklfasdf</p>
-                    </div>
-                    <div class="sizes">
-                        <ul>
-                            <li>S</li>
-                            <li>M</li>
-                            <li>L</li>
-                            <li>XL</li>
-                        </ul>
-                    </div>
-                    <p class="sternebewertung w-full">
-                        <input type="radio" id="stern5" name="bewertung" value="5"><label for="stern5" title="5 Sterne"></i>5 Sterne</label>
-                        <input type="radio" id="stern4" name="bewertung" value="4"><label for="stern4" title="4 Sterne"></i>4 Sterne</label>
-                        <input type="radio" id="stern3" name="bewertung" value="3"><label for="stern3" title="3 Sterne"></i>3 Sterne</label>
-                        <input type="radio" id="stern2" name="bewertung" value="2"><label for="stern2" title="2 Sterne"></i>2 Sterne</label>
-                        <input type="radio" id="stern1" name="bewertung" value="1"><label for="stern1" title="1 Stern"></i>1 Stern</label>
-                        <span id="Bewertung" title="Keine Bewertung"></span>
-                    </p>
-                    <div class="addCart"><button type="submit">Send to Cart</button></div>
-                </div>
-                <div class="product">
-                    <h3>Binary Tee</h3>
-                    <img src="files/media/shirt.png" alt="Tee">
-                    <div class="description">
-                        <p>asdfjl akldjflak lölk öö lkdj aölkdjfö aölölkj sdfjaskdjfaj löakjklfasdf</p>
-                    </div>
-                    <div class="sizes">
-                        <ul>
-                            <li>S</li>
-                            <li>M</li>
-                            <li>L</li>
-                            <li>XL</li>
-                        </ul>
-                    </div>
-                    <p class="sternebewertung w-full">
-                        <input type="radio" id="stern5" name="bewertung" value="5"><label for="stern5" title="5 Sterne">5 Sterne</label>
-                        <input type="radio" id="stern4" name="bewertung" value="4"><label for="stern4" title="4 Sterne">4 Sterne</label>
-                        <input type="radio" id="stern3" name="bewertung" value="3"><label for="stern3" title="3 Sterne">3 Sterne</label>
-                        <input type="radio" id="stern2" name="bewertung" value="2"><label for="stern2" title="2 Sterne">2 Sterne</label>
-                        <input type="radio" id="stern1" name="bewertung" value="1"><label for="stern1" title="1 Stern">1 Stern</label>
-                        <span id="Bewertung" title="Keine Bewertung"></span>
-                    </p>
-                    <div class="addCart"><button type="submit">Send to Cart</button></div>
-                </div>
-                <div class="product">
-                    <h3>Binary Tee</h3>
-                    <img src="files/media/shirt.png" alt="Tee">
-                    <div class="description">
-                        <p>asdfjl akldjflak lölk öö lkdj aölkdjfö aölölkj sdfjaskdjfaj löakjklfasdf</p>
-                    </div>
-                    <div class="sizes">
-                        <ul>
-                            <li>S</li>
-                            <li>M</li>
-                            <li>L</li>
-                            <li>XL</li>
-                        </ul>
-                    </div>
-                    <p class="sternebewertung w-full">
-                        <input type="radio" id="stern5" name="bewertung" value="5"><label for="stern5" title="5 Sterne">5 Sterne</label>
-                        <input type="radio" id="stern4" name="bewertung" value="4"><label for="stern4" title="4 Sterne">4 Sterne</label>
-                        <input type="radio" id="stern3" name="bewertung" value="3"><label for="stern3" title="3 Sterne">3 Sterne</label>
-                        <input type="radio" id="stern2" name="bewertung" value="2"><label for="stern2" title="2 Sterne">2 Sterne</label>
-                        <input type="radio" id="stern1" name="bewertung" value="1"><label for="stern1" title="1 Stern">1 Stern</label>
-                        <span id="Bewertung" title="Keine Bewertung"></span>
-                    </p>
-                    <div class="addCart"><button type="submit">Send to Cart</button></div>
-                </div>
-                <div class="product">
-                    <h3>Binary Tee</h3>
-                    <img src="files/media/shirt.png" alt="Tee">
-                    <div class="description">
-                        <p>asdfjl akldjflak lölk öö lkdj aölkdjfö aölölkj sdfjaskdjfaj löakjklfasdf</p>
-                    </div>
-                    <div class="sizes">
-                        <ul>
-                            <li>S</li>
-                            <li>M</li>
-                            <li>L</li>
-                            <li>XL</li>
-                        </ul>
-                    </div>
-                    <p class="sternebewertung w-full">
-                        <input type="radio" id="stern5" name="bewertung" value="5"><label for="stern5" title="5 Sterne">5 Sterne</label>
-                        <input type="radio" id="stern4" name="bewertung" value="4"><label for="stern4" title="4 Sterne">4 Sterne</label>
-                        <input type="radio" id="stern3" name="bewertung" value="3"><label for="stern3" title="3 Sterne">3 Sterne</label>
-                        <input type="radio" id="stern2" name="bewertung" value="2"><label for="stern2" title="2 Sterne">2 Sterne</label>
-                        <input type="radio" id="stern1" name="bewertung" value="1"><label for="stern1" title="1 Stern">1 Stern</label>
-                        <span id="Bewertung" title="Keine Bewertung"></span>
-                    </p>
-                    <div class="addCart"><button type="submit">Send to Cart</button></div>
-                </div>
-=======
                 <?php
                     //$add = 'INSERT INTO cart_item (cid, psku, pid, qty) values (?,?,?,?)';
                     //$add_stmt->prepare($add);
@@ -479,7 +373,6 @@ session_start();
                     }    
                     $result->free();  
                 ?>
->>>>>>> Stashed changes
             </div>
         </section>
         <section id="qa" class="flex justify-center">
@@ -605,14 +498,6 @@ session_start();
     <script>
         // Get the modal
         var modal = document.getElementById("myModal");
-<<<<<<< Updated upstream
-
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
-
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
-=======
         var cart_modal = document.getElementById("cartModal");
         var rating_modal = document.getElementById("ratingModal");
 
@@ -625,35 +510,28 @@ session_start();
         var span = document.getElementsByClassName("close")[0];
         var cart_span = document.getElementsByClassName("cartClose")[0];
         var rating_span = document.getElementsByClassName("ratingClose")[0];
->>>>>>> Stashed changes
 
         // When the user clicks the button, open the modal 
         btn.onclick = function() {
         modal.style.display = "block";
         }
-<<<<<<< Updated upstream
-=======
         cart_btn.onclick = function() {
             cart_modal.style.display = "block";
         }
         rating_btn.onclick = function() {
             rating_modal.style.display = "block";
         }
->>>>>>> Stashed changes
 
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
         modal.style.display = "none";
         }
-<<<<<<< Updated upstream
-=======
         cart_span.onclick = function() {
             cart_modal.style.display = "none";
         }
         rating_span.onclick = function() {
             rating_modal.style.display = "none";
         }
->>>>>>> Stashed changes
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
@@ -661,8 +539,6 @@ session_start();
             modal.style.display = "none";
         }
         }
-<<<<<<< Updated upstream
-=======
         window.onclick = function(event) {
             if (event.target == cart_modal) {
                 cart_modal.style.display = "none";
@@ -673,7 +549,6 @@ session_start();
                 rating_modal.style.display = "none";
             }
         }
->>>>>>> Stashed changes
 
 
 
