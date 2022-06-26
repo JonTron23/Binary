@@ -16,14 +16,10 @@ session_start();
     $error = '';
     $email = '';
     $password = '';
-<<<<<<< Updated upstream
-    $query = 'select email, password from users where email = ?';
-=======
 
 
 
     $query = 'select email, uid, firstname, password from user where email = ?';
->>>>>>> Stashed changes
     $stmt = $mysqli->prepare($query);
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
@@ -38,12 +34,6 @@ session_start();
             while($row = $result->fetch_assoc()){
                 if(password_verify($password, $row['password'])){
                     echo "email: " . $row['email'] . ", password : " . $row['password'] . "<br />";
-<<<<<<< Updated upstream
-                    $_SESSION["email"] = $email;
-                    $_SESSION["loggedIn"] = true;
-                } else {
-                    echo('wrong password');
-=======
 
                     $cart_stmt->bind_param('i', $row['uid']);
                     $cart_stmt->execute();
@@ -59,7 +49,6 @@ session_start();
 
 
 
->>>>>>> Stashed changes
                 }
             }    
             $result->free();    
