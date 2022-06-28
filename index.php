@@ -112,27 +112,52 @@ session_start();
     </div>
 
 
-
-
         <!-- The Modal -->
         <div id="cartModal" class="modal">
 
-        <?php 
-            $cartquery = "SELECT * FROM "
+            <?php 
+                $cartquery = "SELECT * FROM "
 
-        ?>
-            <!-- Modal content -->
-            <div class="modal-content bg-black flex">
-                <ul class="cartItems">
-                    <li class="item"></li>
-                    <li class="item"></li>
-                    <li class="item"></li>
-                    <li class="item"></li>
-                    <li class="item"></li>
-                </ul>
-                <span class="h-1/2 cartClose">&times;</span>
-            </div>
+            ?>
+                <!-- Modal content -->
+                <div class="modal-content bg-black flex">
+                    <ul class="cartItems">
+                        <li class="item"></li>
+                        <li class="item"></li>
+                        <li class="item"></li>
+                        <li class="item"></li>
+                        <li class="item"></li>
+                    </ul>
+                    <span class="h-1/2 cartClose">&times;</span>
+                </div>
         </div>
+
+
+        <!-- The Modal -->
+        <div id="ratingModal" class="modal">
+            <!-- Modal content -->
+        <div class="modal-content bg-black flex">
+        <form class="flex flex-col w-1/2 justify-center pl-6" action="" method="post">
+            <div class="login_input_box flex flex-col mb-8">
+                <input class="login_input z-10" type="text" name="rating" required>
+                <label class="login_label pb-2 z-0" for="rating">Rating</label>
+            </div>
+            <p class="sternebewertung w-full">
+                <input type="radio" id="stern5" name="bewertung" value="5"><label for="stern5" title="5 Sterne">5 Sterne</label>
+                <input type="radio" id="stern4" name="bewertung" value="4"><label for="stern4" title="4 Sterne">4 Sterne</label>
+                <input type="radio" id="stern3" name="bewertung" value="3"><label for="stern3" title="3 Sterne">3 Sterne</label>
+                <input type="radio" id="stern2" name="bewertung" value="2"><label for="stern2" title="2 Sterne">2 Sterne</label>
+                <input type="radio" id="stern1" name="bewertung" value="1"><label for="stern1" title="1 Stern">1 Stern</label>
+                <span id="Bewertung" title="Keine Bewertung"></span>
+            </p>
+            <input type="submit" value="Submit" id="submit">
+        </form>     
+       
+        <span class="h-1/2 ratingClose">&times;</span>
+    </div>
+           
+        </div>
+
 
 
         <section id="welcome">
@@ -313,70 +338,39 @@ session_start();
         </section>
         <section id="shop">
             <div class="shopslider flex">
-                <div class="product">
-                    <h3>Binary Tee</h3>
-                    <img src="files/media/shirt.png" alt="Tee">
-                    <div class="description">
-                        <p>asdfjl akldjflak lölk öö lkdj aölkdjfö aölölkj sdfjaskdjfaj löakjklfasdf</p>
-                    </div>
-                    <div class="sizes">
-                        <ul>
-                            <li>S</li>
-                            <li>M</li>
-                            <li>L</li>
-                            <li>XL</li>
-                        </ul>
-                    </div>
-                    <div class="addCart"><button type="submit">Send to Cart</button></div>
-                </div>
-                <div class="product">
-                    <h3>Binary Tee</h3>
-                    <img src="files/media/shirt.png" alt="Tee">
-                    <div class="description">
-                        <p>asdfjl akldjflak lölk öö lkdj aölkdjfö aölölkj sdfjaskdjfaj löakjklfasdf</p>
-                    </div>
-                    <div class="sizes">
-                        <ul>
-                            <li>S</li>
-                            <li>M</li>
-                            <li>L</li>
-                            <li>XL</li>
-                        </ul>
-                    </div>
-                    <div class="addCart"><button type="submit">Send to Cart</button></div>
-                </div>
-                <div class="product">
-                    <h3>Binary Tee</h3>
-                    <img src="files/media/shirt.png" alt="Tee">
-                    <div class="description">
-                        <p>asdfjl akldjflak lölk öö lkdj aölkdjfö aölölkj sdfjaskdjfaj löakjklfasdf</p>
-                    </div>
-                    <div class="sizes">
-                        <ul>
-                            <li>S</li>
-                            <li>M</li>
-                            <li>L</li>
-                            <li>XL</li>
-                        </ul>
-                    </div>
-                    <div class="addCart"><button type="submit">Send to Cart</button></div>
-                </div>
-                <div class="product">
-                    <h3>Binary Tee</h3>
-                    <img src="files/media/shirt.png" alt="Tee">
-                    <div class="description">
-                        <p>asdfjl akldjflak lölk öö lkdj aölkdjfö aölölkj sdfjaskdjfaj löakjklfasdf</p>
-                    </div>
-                    <div class="sizes">
-                        <ul>
-                            <li>S</li>
-                            <li>M</li>
-                            <li>L</li>
-                            <li>XL</li>
-                        </ul>
-                    </div>
-                    <div class="addCart"><button type="submit">Send to Cart</button></div>
-                </div>
+                <?php
+                    // $add = 'INSERT INTO cart_item (cid, psku, pid, qty) values (?,?,?,?)';
+                    // $add_stmt->prepare($add);
+
+                    $one = 1;
+                    $stmt->bind_param('i', $one);
+                    $stmt->execute();
+                    $result=$stmt->get_result();
+                    while($row = $result->fetch_assoc()){
+                        echo (
+                            '
+                            <div class="product">
+                                <h3>' . $row['name'] . '</h3>
+                                <img src="' . $row['img'] . '" alt="Tee">
+                            <div class="description">
+                                <p>' . $row['description'] . '</p>
+                            </div>
+                            <div class="sizes">
+                                <ul>
+                                    <li>S</li>
+                                    <li>M</li>
+                                    <li>L</li>
+                                    <li>XL</li>
+                                </ul>
+                            </div>
+                            <button id="ratingBtn ' . $row['pid'] . '">Bewertungen</button>
+                            <div class="addCart"><button type="submit" id="' . $row['pid'] . '">Send to Cart</button></div>
+                            </div>
+                            '
+                        );
+                    }    
+                    $result->free();  
+                ?>
             </div>
         </section>
         <section id="qa" class="flex justify-center">
@@ -505,14 +499,17 @@ session_start();
         // Get the modal
         var modal = document.getElementById("myModal");
         var cart_modal = document.getElementById("cartModal");
+        var rating_modal = document.getElementById("ratingModal");
 
         // Get the button that opens the modal
         var btn = document.getElementById("myBtn");
         var cart_btn = document.getElementById("cartBtn");
+        var rating_btn = document.getElementById("ratingBtn");
 
         // Get the <span> element that closes the modal
         var span = document.getElementsByClassName("close")[0];
         var cart_span = document.getElementsByClassName("cartClose")[0];
+        var rating_span = document.getElementsByClassName("ratingClose")[0];
 
         // When the user clicks the button, open the modal 
         btn.onclick = function() {
@@ -521,6 +518,9 @@ session_start();
         cart_btn.onclick = function() {
             cart_modal.style.display = "block";
         }
+        rating_btn.onclick = function() {
+            rating_modal.style.display = "block";
+        }
 
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
@@ -528,6 +528,9 @@ session_start();
         }
         cart_span.onclick = function() {
             cart_modal.style.display = "none";
+        }
+        rating_span.onclick = function() {
+            rating_modal.style.display = "none";
         }
 
         // When the user clicks anywhere outside of the modal, close it
@@ -539,6 +542,11 @@ session_start();
         window.onclick = function(event) {
             if (event.target == cart_modal) {
                 cart_modal.style.display = "none";
+            }
+        }
+        window.onclick = function(event) {
+            if (event.target == rating_modal) {
+                rating_modal.style.display = "none";
             }
         }
 
