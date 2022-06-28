@@ -112,59 +112,52 @@ session_start();
     </div>
 
 
-
-            
-        <!-- The Modal -->
-        <div id="ratingModal" class="modal">
-
-            <!-- Modal content -->
-            <div class="modal-content bg-black flex">
-                <form class="flex flex-col w-1/2 justify-center pl-6" action="" method="post">
-                    <div class="login_input_box flex flex-col mb-8">
-                        <input class="login_input z-10" type="text" name="rating" required>
-                        <label class="login_label pb-2 z-0" for="rating">Rating</label>
-                    </div>
-                    <p class="sternebewertung w-full">
-                        <input type="radio" id="stern5" name="bewertung" value="5"><label for="stern5" title="5 Sterne">5 Sterne</label>
-                        <input type="radio" id="stern4" name="bewertung" value="4"><label for="stern4" title="4 Sterne">4 Sterne</label>
-                        <input type="radio" id="stern3" name="bewertung" value="3"><label for="stern3" title="3 Sterne">3 Sterne</label>
-                        <input type="radio" id="stern2" name="bewertung" value="2"><label for="stern2" title="2 Sterne">2 Sterne</label>
-                        <input type="radio" id="stern1" name="bewertung" value="1"><label for="stern1" title="1 Stern">1 Stern</label>
-                        <span id="Bewertung" title="Keine Bewertung"></span>
-                    </p>
-                    <input type="submit" value="Submit" id="submit">
-                </form>     
-            
-                <span class="h-1/2 ratingClose">&times;</span>
-            </div>
-        </div>
-
         <!-- The Modal -->
         <div id="cartModal" class="modal">
 
-        <?php 
-            $cartquery = "SELECT * FROM cart_item WHERE cid = ?";
-            $cartstmt = $mysqli->prepare($cartquery);
-            $cartstmt->bind_param('s', $_SESSION['cartID']);
-            $cartstmt->execute();
-            $result=$cartstmt->get_result();
-            while($row = $result->fetch_assoc()){
-                //echo "email: " . $row['email'] . ", password : " . $row['password'] . "<br />";
-            }    
+            <?php 
+                $cartquery = "SELECT * FROM "
 
-        ?>
-            <!-- Modal content -->
-            <div class="modal-content bg-black flex">
-                <ul class="cartItems">
-                    <li class="item"></li>
-                    <li class="item"></li>
-                    <li class="item"></li>
-                    <li class="item"></li>
-                    <li class="item"></li>
-                </ul>
-                <span class="h-1/2 cartClose">&times;</span>
-            </div>
+            ?>
+                <!-- Modal content -->
+                <div class="modal-content bg-black flex">
+                    <ul class="cartItems">
+                        <li class="item"></li>
+                        <li class="item"></li>
+                        <li class="item"></li>
+                        <li class="item"></li>
+                        <li class="item"></li>
+                    </ul>
+                    <span class="h-1/2 cartClose">&times;</span>
+                </div>
         </div>
+
+
+        <!-- The Modal -->
+        <div id="ratingModal" class="modal">
+            <!-- Modal content -->
+        <div class="modal-content bg-black flex">
+        <form class="flex flex-col w-1/2 justify-center pl-6" action="" method="post">
+            <div class="login_input_box flex flex-col mb-8">
+                <input class="login_input z-10" type="text" name="rating" required>
+                <label class="login_label pb-2 z-0" for="rating">Rating</label>
+            </div>
+            <p class="sternebewertung w-full">
+                <input type="radio" id="stern5" name="bewertung" value="5"><label for="stern5" title="5 Sterne">5 Sterne</label>
+                <input type="radio" id="stern4" name="bewertung" value="4"><label for="stern4" title="4 Sterne">4 Sterne</label>
+                <input type="radio" id="stern3" name="bewertung" value="3"><label for="stern3" title="3 Sterne">3 Sterne</label>
+                <input type="radio" id="stern2" name="bewertung" value="2"><label for="stern2" title="2 Sterne">2 Sterne</label>
+                <input type="radio" id="stern1" name="bewertung" value="1"><label for="stern1" title="1 Stern">1 Stern</label>
+                <span id="Bewertung" title="Keine Bewertung"></span>
+            </p>
+            <input type="submit" value="Submit" id="submit">
+        </form>     
+       
+        <span class="h-1/2 ratingClose">&times;</span>
+    </div>
+           
+        </div>
+
 
 
         <section id="welcome">
@@ -346,8 +339,8 @@ session_start();
         <section id="shop">
             <div class="shopslider flex">
                 <?php
-                    $add = 'INSERT INTO cart_item (cid, psku, pid, qty) values (?,?,?,?)';
-                    $add_stmt = $mysqli->prepare($add);
+                    // $add = 'INSERT INTO cart_item (cid, psku, pid, qty) values (?,?,?,?)';
+                    // $add_stmt->prepare($add);
 
                     $one = 1;
                     $stmt->bind_param('i', $one);
@@ -525,9 +518,9 @@ session_start();
         cart_btn.onclick = function() {
             cart_modal.style.display = "block";
         }
-         rating_btn.onclick = function() {
+        rating_btn.onclick = function() {
             rating_modal.style.display = "block";
-         }
+        }
 
         // When the user clicks on <span> (x), close the modal
         span.onclick = function() {
@@ -536,9 +529,9 @@ session_start();
         cart_span.onclick = function() {
             cart_modal.style.display = "none";
         }
-         rating_span.onclick = function() {
-             rating_modal.style.display = "none";
-         }
+        rating_span.onclick = function() {
+            rating_modal.style.display = "none";
+        }
 
         // When the user clicks anywhere outside of the modal, close it
         window.onclick = function(event) {
@@ -551,11 +544,11 @@ session_start();
                 cart_modal.style.display = "none";
             }
         }
-         window.onclick = function(event) {
-             if (event.target == rating_modal) {
-                 rating_modal.style.display = "none";
-             }
-         }
+        window.onclick = function(event) {
+            if (event.target == rating_modal) {
+                rating_modal.style.display = "none";
+            }
+        }
 
 
 
