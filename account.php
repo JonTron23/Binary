@@ -103,7 +103,7 @@ session_start();
         </div>
         <div class="register_input_box">
             <input class="register_input" 
-                type="email" 
+                type="text" 
                 id="email" 
                 name="email" 
                 pattern="([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,}$" 
@@ -113,7 +113,7 @@ session_start();
         </div>
         <div class="register_input_box">
             <input class="register_input"
-                type="street" 
+                type="text" 
                 id="autocomplete"
                 name="street"
                 value="<?php echo htmlspecialchars($street) ?>" >
@@ -121,7 +121,7 @@ session_start();
         </div>
         <div class="register_input_box">
             <input class="register_input" 
-                    type="city" 
+                    type="text" 
                     id="inputCity"
                     name="city"
                     value="<?php echo htmlspecialchars($city) ?>"> 
@@ -129,7 +129,7 @@ session_start();
         </div>
         <div class="register_input_box">
             <input class="register_input"
-                    type="zip" 
+                    type="text" 
                     id="inputZip"
                     name="zip"
                     value="<?php echo $zip ?>">
@@ -137,11 +137,11 @@ session_start();
         </div>
         <div class="register_input_box">
             <input class="register_input"
-                    type="country" 
+                    type="text" 
                     id="inputCounty"
                     name="country"
                     value="<?php echo htmlspecialchars($country) ?>">
-                <label class="register_label" for="email">Country</label>
+                <label class="register_label" for="country">Country</label>
         </div>
         <input type="submit" value="Submit" id="submit">
     </form>
