@@ -19,69 +19,59 @@ session_start();
     $email = '';
     $password = '';
 
-
-    $query = 'select email, uid, password from user where email = ?';
+    $errors = array();
+    $query = 'select email, uid, password, firstname, lastname from user where email = ?';
     $stmt = $mysqli->prepare($query);
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
+        session_regenerate_id($delete_old_session = true);
         $email=trim($_POST["email"]);
         $password=trim($_POST["password"]);
 
-        $cart_query = 'SELECT * FROM cart WHERE uid = ?';
-        $cart_stmt = $mysqli->prepare($cart_query);
-
+        // $cart_query = 'SELECT * FROM cart WHERE uid = ?';
+        // $cart_stmt = $mysqli->prepare($cart_query);
+        
         if(isset($email, $password)){
+            if(!preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,}$/ix", $email)){
+                array_push($errors, "E-Mail does not match requirements");
+            }
+            if(!preg_match("/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/", $password)){
+                array_push($errors, "Password does not match requirements");
+            }
             $stmt->bind_param('s', $email);
             $stmt->execute();
             $result=$stmt->get_result();
 
 
 
-            
-            while($row = $result->fetch_assoc()){
-                if(password_verify($password, $row['password'])){
-                    echo "email: " . $row['email'] . ", password : " . $row['password'] . "<br />";
-
-                    $cart_stmt->bind_param('i', $row['uid']);
-                    $cart_stmt->execute();
-                    $cart_result=$cart_stmt->get_result();
-                    while($cart_row = $cart_result->fetch_assoc()){
-                        $_SESSION['cartID'] = $cart_row['cid'];
+            if (count($errors) == 0){
+                while($row = $result->fetch_assoc()){
+                    if(password_verify($password, $row['password'])){
+    
+                        $cart_stmt->bind_param('i', $row['uid']);
+                        $cart_stmt->execute();
+                        $cart_result=$cart_stmt->get_result();
+                        while($cart_row = $cart_result->fetch_assoc()){
+                            $_SESSION['cartID'] = $cart_row['cid'];
+                        }
+    
+                        $_SESSION["email"] = $email;
+                        $_SESSION["firstname"] = $row['firstname'];
+                        $_SESSION["lastname"] = $row['lastname'];
+                        $_SESSION["username"] = $row['firstname'] . " " . $row['lastname'];
+                        $_SESSION["loggedIn"] = true;
                     }
-
-                    $_SESSION["email"] = $email;
-                    $_SESSION["loggedIn"] = true;
-                    echo($_SESSION['cartID']);
-
-
-
                 }
-            }    
+            } else {
+                print_r($errors);
+            }
+
+            
+    
             $result->free();    
         }
+        header("Location: index.php");
     }
     ?>
-        <header>
-        <nav>
-            <ul class="flex justify-around px-4">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#home">About</a></li>
-                <li><a href="#home">Games</a></li>
-                <li><a href="#home">News</a></li>
-                <li><a href="#home">Media</a></li>
-                <li><a href="#home">Partner</a></li>
-                <li><a href="#home">Q&A</a></li>
-                <li class="cursor-pointer" id="myBtn">
-                    <?php if( !isset($_SESSION['loggedIn'])): ?>
-                        <i class='fa-solid fa-arrow-right-to-bracket'></i>
-                    <?php else: ?>
-                        <i class='fa-solid fa-user'></i>
-                    <?php endif; ?>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <h1>Logged In</h1>
-    <a href="index.php">Home</a>
 </body>
 </html>

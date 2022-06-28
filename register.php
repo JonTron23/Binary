@@ -85,7 +85,7 @@ session_start();
                             $cart_insert->bind_param('i', $row['uid']);
                             $cart_insert->execute();
                         }
-
+                        header("Location: index.php");
                         
                     } else {
                         print_r($errors);

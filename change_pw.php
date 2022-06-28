@@ -35,20 +35,17 @@ session_start();
                 $current_password = $_POST['current_password'];
                 $new_password = $_POST['new_password'];
                 $repeat_password = $_POST['repeat_password'];
-                echo($uid);
-                echo($current_password);
-                echo($new_password);
                 if(!preg_match("/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/", $current_password)){
                     $error_password = "Current Password does not match requirements";
-                    echo $error_password;
+                    echo  htmlspecialchars($error_password);
                 }
                 if(!preg_match("/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/", $new_password)){
                     $error_password = "New Password does not match requirements";
-                    echo $error_password;
+                    echo  htmlspecialchars($error_password);
                 }
                 if(!password_verify($current_password, $db_password)){
                     $error_password = "The password does not match your Password";
-                    echo $error_password;
+                    echo  htmlspecialchars($error_password);
                 }
                 if($new_password === $repeat_password){
                         $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);
