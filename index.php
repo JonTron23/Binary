@@ -81,11 +81,11 @@ session_start();
     <?php if( !isset($_SESSION['loggedIn'])): ?>
         <form class="flex flex-col w-1/2 justify-center pl-6" action="login.php" method="post">
             <div class="login_input_box flex flex-col mb-8">
-                <input class="login_input z-10" type="email" name="email" required>
+                <input class="login_input z-10" type="email" name="email" pattern="([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,}$" required>
                 <label class="login_label pb-2 z-0" for="email">E-Mail</label>
             </div>
             <div class="login_input_box flex flex-col mb-4">
-                <input class="login_input z-10" type="password" name="password" required>
+                <input class="login_input z-10" type="password" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
                 <label class="login_label pb-2 z-0" for="password">Password</label>
             </div>
                 <input type="submit" value="Submit" id="submit">
@@ -133,30 +133,7 @@ session_start();
         </div>
 
 
-        <!-- The Modal -->
-        <div id="ratingModal" class="modal">
-            <!-- Modal content -->
-        <div class="modal-content bg-black flex">
-        <form class="flex flex-col w-1/2 justify-center pl-6" action="" method="post">
-            <div class="login_input_box flex flex-col mb-8">
-                <input class="login_input z-10" type="text" name="rating" required>
-                <label class="login_label pb-2 z-0" for="rating">Rating</label>
-            </div>
-            <p class="sternebewertung w-full">
-                <input type="radio" id="stern5" name="bewertung" value="5"><label for="stern5" title="5 Sterne">5 Sterne</label>
-                <input type="radio" id="stern4" name="bewertung" value="4"><label for="stern4" title="4 Sterne">4 Sterne</label>
-                <input type="radio" id="stern3" name="bewertung" value="3"><label for="stern3" title="3 Sterne">3 Sterne</label>
-                <input type="radio" id="stern2" name="bewertung" value="2"><label for="stern2" title="2 Sterne">2 Sterne</label>
-                <input type="radio" id="stern1" name="bewertung" value="1"><label for="stern1" title="1 Stern">1 Stern</label>
-                <span id="Bewertung" title="Keine Bewertung"></span>
-            </p>
-            <input type="submit" value="Submit" id="submit">
-        </form>     
-       
-        <span class="h-1/2 ratingClose">&times;</span>
-    </div>
-           
-        </div>
+
 
 
 
@@ -363,7 +340,7 @@ session_start();
                                     <li>XL</li>
                                 </ul>
                             </div>
-                            <button id="ratingBtn ' . $row['pid'] . '">Bewertungen</button>
+                            <a href="rating.php?pid=' . $row['pid'] . '">Rating</a>                
                             <div class="addCart"><button type="submit" id="' . $row['pid'] . '">Send to Cart</button></div>
                             </div>
                             '
@@ -372,6 +349,7 @@ session_start();
                     $result->free();  
                 ?>
             </div>
+            
         </section>
         <section id="qa" class="flex justify-center">
             <ul id="faq_list" class="w-5/12 flex flex-col items-center">

@@ -1,7 +1,7 @@
 <?php
 // Variabeln deklarieren
 $host = 'localhost'; // host
-$username = 'root'; // username
+$username = 'gustaf'; // username
 $password = ''; // password
 $database = 'binary'; // database
 
